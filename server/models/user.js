@@ -1,9 +1,7 @@
 const config = require('config')
-const jsonwebtoken = require('jsonwebtoken')
 const mongoose = require('mongoose')
-
+const jsonwebtoken = require('../utils/jsonwebtoken')
 const PASSWORD_SECRET = config.get('secrets.password')
-const JWT_SECRET = config.get('secrets.jwt')
 
 const schema = new mongoose.Schema({
   username: String,

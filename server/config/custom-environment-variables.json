@@ -1,0 +1,10 @@
+{
+  "port": "CAN_PORT",
+  "db": {
+    "connectionString": "CAN_MONGO"
+  },
+  "secrets": {
+    "jwt": "CAN_JWT_SECRET",
+    "password": "CAN_PASSWORD_SECRET"
+  }
+}

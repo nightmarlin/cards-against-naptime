@@ -1,5 +1,6 @@
 const logger = require('pino')()
-const commands = {}
+const commands = require('./commands')
+const jwt = require('jsonwebtoken')
 /**
  * messageFormat:
  *  command: ''
@@ -24,14 +25,15 @@ module.exports = class SocketHandler {
       logger.info(`client disconnect. connection count: ${this.connectionCount}`)
     })
 
-    socket.on('rpc', this.handleRPC())
+    socket.on('rpc', data => this.handleRPC(socket, data))
   }
 
-  async handleRPC (data) {
+  async handleRPC (socket, data) {
     try {
       const ctx = {
         command: data.command,
         params: data.params,
+        socket: socket,
         jwt: data.jwt,
         user: null
       }

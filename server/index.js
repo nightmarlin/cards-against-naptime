@@ -1,8 +1,12 @@
+const config = require('config')
+const db = require('./models')
 const express = require('express')
 const http = require('http')
 const logger = require('pino')()
 const socketio = require('socket.io')
 const SocketHandler = require('./socket-handler')
+
+const PORT = config.get('port')
 
 const app = express()
 const server = http.Server(app)
@@ -24,4 +28,11 @@ app.get('/ready', (req, res) => {
 
 const socketHandler = new SocketHandler(io)
 
-server.listen(3000, () => logger.warn('server open for connections'))
+db.connect()
+  .catch(err => {
+    logger.fatal(err)
+    process.exit(1)
+  })
+  .then(() => {
+    server.listen(PORT, () => logger.warn('server open for connections'))
+  })

@@ -1,14 +1,24 @@
 <template>
     <v-card
-      class="mx-auto white-card"
+      class="white-card flexcard"
       max-width="250"
       height="300"
     >
       <v-card-title>{{ text }}</v-card-title>
+
+      <v-card-text class="grow" />
+
+      <v-card-actions>
+        <v-btn>click</v-btn>
+        <v-spacer />
+        <canvas :id=cardJsonCanvasId class="cardJsonCanvas" />
+      </v-card-actions>
     </v-card>
 </template>
 
 <script>
+const qrcode = require('qrcode')
+
 export default {
   name: 'card',
   props: {
@@ -16,7 +26,8 @@ export default {
     // Standard - Pick 2 - Draw 2 Pick 3
     initIsBlack: Boolean,
     initIsBlank: Boolean,
-    initText: String
+    initText: String,
+    cardUid: String
   },
   data () {
     return {
@@ -28,19 +39,49 @@ export default {
       isHovered: false
     }
   },
-  computed: {},
-  methods: {},
-  watch: {}
+  computed: {
+    cardJsonCanvasId: function () { return this.cardUid + 'CardJsonCanvasId' }
+  },
+  methods: { },
+  watch: { },
+  mounted () {
+    let idRetrievalPattern = /CS([0-9]*)(WC|BC|XX)([0-9]*)/
+
+    let csIdArr = idRetrievalPattern.exec(this.cardUid)
+
+    if (csIdArr) {
+      let cardSetId, cardId
+      cardSetId = 'CS' + csIdArr[1]
+      cardId = csIdArr[2] + csIdArr[3]
+
+      let cardJson = `["${cardSetId}", "${cardId}"]`
+
+      qrcode.toCanvas(document.getElementById(this.cardJsonCanvasId), cardJson, { margin: 1, scale: 1 }, function (err) {
+        if (err) console.error(err)
+      })
+    }
+  }
 }
 </script>
 
-<style>
+<style scoped>
 .blackCardBackground {
-  background-color: darkslategray;
+  background-color: black;
+  color: white;
 }
 
 .white-card {
-  background-color: blanchedalmond;
+  background-color: white;
   color: black;
+}
+
+.cardJsonCanvas {
+  height: 250;
+  width: 250;
+}
+
+.flexcard {
+  display: flex;
+  flex-direction: column;
 }
 </style>

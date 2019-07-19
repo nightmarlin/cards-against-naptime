@@ -1,5 +1,5 @@
 <template>
-  <card initText="Let's go" />
+  <card cardUid="CS001WC001" initText="Let's go" />
 </template>
 
 <script>

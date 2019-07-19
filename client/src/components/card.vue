@@ -1,9 +1,11 @@
 <template>
-  <v-flex>
-
-    <!--  -->
-
-  </v-flex>
+    <v-card
+      class="mx-auto white-card"
+      max-width="250"
+      height="300"
+    >
+      <v-card-title>{{ text }}</v-card-title>
+    </v-card>
 </template>
 
 <script>
@@ -18,10 +20,10 @@ export default {
   },
   data () {
     return {
-      responseCount: this.props.initResponseCount,
-      isBlack: this.props.initIsBlack,
-      isBlank: this.props.initIsBlank,
-      text: this.props.text,
+      responseCount: this.initResponseCount,
+      isBlack: this.initIsBlack,
+      isBlank: this.initIsBlank,
+      text: this.initText,
       isSelected: false,
       isHovered: false
     }
@@ -33,7 +35,12 @@ export default {
 </script>
 
 <style>
-.cardBackground {
+.blackCardBackground {
   background-color: darkslategray;
+}
+
+.white-card {
+  background-color: blanchedalmond;
+  color: black;
 }
 </style>

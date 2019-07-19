@@ -6,5 +6,5 @@ Vue.use(Vuetify, {
   options: {
     customProperties: true
   },
-  iconfont: 'mdi',
+  iconfont: 'mdi'
 })

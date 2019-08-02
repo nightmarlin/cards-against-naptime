@@ -55,10 +55,14 @@ module.exports = class SocketHandler {
 
       reply({
         state: 'SUCCESS',
-        data: result
+        result
       })
     } catch (e) {
       logger.error(e)
+      reply({
+        state: 'ERROR',
+        reason: e
+      })
     }
   }
 }

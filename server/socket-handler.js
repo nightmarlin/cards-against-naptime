@@ -1,6 +1,6 @@
 const logger = require('pino')()
 const commands = require('./commands')
-const jwt = require('jsonwebtoken')
+const { User } = require('./models')
 /**
  * messageFormat:
  *  command: ''
@@ -25,10 +25,10 @@ module.exports = class SocketHandler {
       logger.info(`client disconnect. connection count: ${this.connectionCount}`)
     })
 
-    socket.on('rpc', data => this.handleRPC(socket, data))
+    socket.on('rpc', (data, reply) => this.handleRPC(socket, data, reply))
   }
 
-  async handleRPC (socket, data) {
+  async handleRPC (socket, data, reply) {
     try {
       const ctx = {
         command: data.command,
@@ -43,7 +43,7 @@ module.exports = class SocketHandler {
       }
 
       if (ctx.jwt) {
-
+        ctx.user = await User.findFromJWT(ctx.jwt)
       }
 
       const command = commands[ctx.command]
@@ -51,7 +51,12 @@ module.exports = class SocketHandler {
         throw new Error('command does not exist')
       }
 
-      await command(ctx)
+      const result = await command(ctx)
+
+      reply({
+        state: 'SUCCESS',
+        data: result
+      })
     } catch (e) {
       logger.error(e)
     }

@@ -1,4 +1,5 @@
 <template>
+  <v-hover >
     <v-card
       :class="`${initIsBlack ? 'black' : 'white'}-card flexcard`"
       max-width="250"
@@ -14,6 +15,7 @@
         <v-img :src="cardQrCodeSrc" class="cardJsonImg"/>
       </v-card-actions>
     </v-card>
+  </v-hover>
 </template>
 
 <script>

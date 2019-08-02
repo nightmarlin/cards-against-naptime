@@ -12,7 +12,10 @@ const handleConnection = async (socket) => {
     logger.info(`client disconnect. connection count: ${connectionCount}`)
   })
 
-  socket.on('rpc', (data, reply) => handleRPC(socket, data, reply))
+  socket.on('rpc', (data, reply) => {
+    logger.info('message recieved %O', data)
+    handleRPC(socket, data, reply)
+  })
 }
 
 const handleRPC = async (socket, data, reply) => {
@@ -38,17 +41,20 @@ const handleRPC = async (socket, data, reply) => {
       throw new Error('command does not exist')
     }
 
-    const result = await command(ctx)
+    const result = await command.handler(ctx)
 
     reply({
-      state: 'SUCCESS',
+      status: 'SUCCESS',
       result
     })
   } catch (e) {
     logger.error(e)
     reply({
-      state: 'ERROR',
-      reason: e
+      status: 'ERROR',
+      reason: {
+        message: e.message,
+        stack: e.stack
+      }
     })
   }
 }

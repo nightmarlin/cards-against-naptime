@@ -1,98 +1,110 @@
 <template>
-  <v-card>
-  <!--v-fade-transition-->
+  <v-fade-transition>
+    <v-card v-if="isLoggedIn">
+      <v-card-title>
+        <h2 class="text display-1">Welcome back {{ loggedInUsername }}</h2>
+      </v-card-title>
 
-    <v-card-title v-show="loginStatus.isLoggedIn">
-      <h2 class="text display-1">Welcome back {{ loginStatus.username }}</h2>
-    </v-card-title>
+      <v-card-text>
+        <p class="text body-1">As you're already logged in, you can just click below to continue</p>
+      </v-card-text>
 
-    <v-card-text v-show="loginStatus.isLoggedIn">
-      <p class="text body-1">As you're already logged in, you can just click below to continue</p>
-    </v-card-text>
-
-    <v-card-actions v-show="loginStatus.isLoggedIn">
-      <v-spacer />
-      <v-btn>Continue<v-icon>mdi-login</v-icon></v-btn>
-    </v-card-actions>
-
-    <v-tabs
-      dark
-      v-model="tab"
-      v-show="!loginStatus.isLoggedIn"
-    >
-
-      <v-tab
-        v-for="(t, i) in tabs"
-        :key="i"
-        :href="`#tab-${t.name}`"
-      >
-      {{ t.name }}
-      <v-icon> {{ t.icon }} </v-icon>
-      </v-tab>
-
-      <v-tab-item
-        v-for="(t, i) in tabs"
-        :key="i"
-        :value="`tab-${t.name}`"
+      <v-card-actions>
+        <v-spacer />
+        <v-btn>Continue<v-icon>mdi-login</v-icon></v-btn>
+      </v-card-actions>
+    </v-card>
+    <v-card v-else>
+      <v-tabs
+        dark
+        v-model="tab"
       >
 
-        <v-card
-          flat
-          tile
-        ><v-card-text>
-          <v-layout row justify-center>
-            <v-flex xs10 sm10 md10 lg10 xl10>
-              <v-form
-                ref="details"
-              >
+        <v-tab
+          v-for="(t, i) in tabs"
+          :key="i"
+          :href="`#tab-${t.name}`"
+        >
+          {{ t.name }}
+          <v-icon> {{ t.icon }} </v-icon>
+        </v-tab>
 
-                <v-text-field
-                  :counter="formRules.usernameMaxLength"
-                  v-model="username"
-                  label="Username"
-                  :hint="`${t.name === 'Signup' ? 'Must be unique (being funny is optional)' : '' }`"
-                  :rules="t.name === 'Signup' ? formRules.usernameRules : []"
-                />
+        <v-tab-item
+          v-for="(t, i) in tabs"
+          :key="i"
+          :value="`tab-${t.name}`"
+        >
 
-                <v-text-field
-                  v-model="password"
-                  label="Password"
-                  :hint="`${t.name === 'Signup' ? 'We cannot guarantee perfect security. Do not use a password you have used elsewhere.' : '' }`"
-                  :rules="t.name === 'Signup' ? formRules.pswdRules : []"
-                />
+          <v-card
+            flat
+            tile
+          >
+            <v-card-text>
+              <v-layout row justify-center>
+                <v-flex xs10 sm10 md10 lg10 xl10>
+                  <v-form
+                    ref="details"
+                  >
 
-                <br />
+                    <v-text-field
+                      :counter="formRules.usernameMaxLength"
+                      v-model="username"
+                      label="Username"
+                      :hint="`${t.name === 'Signup' ? 'Must be unique (being funny is optional)' : '' }`"
+                      :rules="t.name === 'Signup' ? formRules.usernameRules : []"
+                    />
 
-                <v-btn
-                  :color="`${t.name === 'Signup' ? 'teal lighten-3' : 'primary' }`"
-                >
-                {{ t.name }}
-                </v-btn>
+                    <v-text-field
+                      v-model="password"
+                      label="Password"
+                      :hint="`${t.name === 'Signup' ? 'We cannot guarantee perfect security. Do not use a password you have used elsewhere.' : '' }`"
+                      :rules="t.name === 'Signup' ? formRules.pswdRules : []"
+                    />
 
-              </v-form>
-            </v-flex>
-          </v-layout>
-        </v-card-text></v-card>
+                    <br />
 
-      </v-tab-item>
+                    <v-btn
+                      :color="`${t.name === 'Signup' ? 'teal lighten-3' : 'primary' }`"
+                      @click="interactionButton(t)"
+                      :disabled="loading"
+                      :loading="loading"
+                    >
+                      {{ t.name }}
+                    </v-btn>
 
-    </v-tabs>
+                  </v-form>
+                </v-flex>
+              </v-layout>
+            </v-card-text>
+          </v-card>
+        </v-tab-item>
+      </v-tabs>
+    </v-card>
+  </v-fade-transition>
 
-  <!--/v-fade-transition-->
-  </v-card>
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex'
 export default {
   name: 'loginBox',
   props: {
     loginStatus: Object
+  },
+  computed: {
+    ...mapState({
+      loggedInUsername: state => state.user.username
+    }),
+    ...mapGetters({
+      isLoggedIn: 'user/isLoggedIn'
+    })
   },
   data () {
     return {
       username: '',
       password: '',
       isSignUp: false,
+      loading: false,
 
       tab: null,
       tabs: [
@@ -119,6 +131,17 @@ export default {
       if (this.$refs.form.validate()) {
         alert('valid')
       }
+    },
+    async interactionButton (t) {
+      this.loading = true
+
+      const action = t.name === 'Login' ? 'user/login' : 'user/register'
+      await this.$store.dispatch(action, {
+        username: this.username,
+        password: this.password
+      })
+
+      this.loading = false
     }
   }
 }

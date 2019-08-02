@@ -52,7 +52,7 @@ schema.statics.register = async function (data) {
     throw new UserError('missing user or password field')
   }
 
-  const usernameInUse = this.exists({
+  const usernameInUse = await this.exists({
     username: data.username
   })
 

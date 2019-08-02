@@ -1724,6 +1724,7 @@ binary-extensions@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.0.0.tgz#23c0df14f6a88077f5f986c0d167ec03c3d5537c"
   integrity sha512-Phlt0plgpIIBOGTT/ehfFnbNlfsDEiqmzE2KRXoX1bLIlir4X/MR+zSyBEkL05ffWgnRSf/DXv+WrUAVr93/ow==
+
 blob@0.0.5:
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/blob/-/blob-0.0.5.tgz#d680eeef25f8cd91ad533f5b01eed48e64caf683"
@@ -9144,6 +9145,11 @@ vue-template-es2015-compiler@^1.9.0:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
+
+vue-wait@^1.4.6:
+  version "1.4.6"
+  resolved "https://registry.yarnpkg.com/vue-wait/-/vue-wait-1.4.6.tgz#fc3cfd4efcdf0d21bc29bfd79370b2218c4e32d2"
+  integrity sha512-aq1Yi7OabS0KlYNgaFHXFrqqR3DwCQ3VM4uCqSLxOr2CI6f7vuo6jHQ6tYF+MhuuXqKHRZyGDkD+3BomDz1OLQ==
 
 vue@^2.6.10:
   version "2.6.10"

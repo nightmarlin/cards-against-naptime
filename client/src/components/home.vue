@@ -2,7 +2,7 @@
   <v-layout row>
 
     <v-flex sm12 md4 pa-4 align-self-top> <!-- Login -->
-      <login-box :loginStatus="userLoginStatus" />
+      <login-box/>
     </v-flex>
 
     <v-flex sm12 md8> <!-- Splash -->
@@ -106,8 +106,7 @@ export default {
           bottomIcons: ['bank', 'briefcase', 'cookie', 'safe'],
           expanded: true
         }
-      ],
-      userLoginStatus: { isLoggedIn: true, username: 'ℵightmarlin', userHash: 111 }
+      ]
     }
   },
   methods: {

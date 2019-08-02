@@ -11,11 +11,33 @@ const mutations = {
 }
 
 const actions = {
-  async login ({ commit }, payload) {
+  async login ({ commit, dispatch }, payload) {
+    const jwt = await dispatch('websocket/rpc', {
+      command: 'login',
+      params: {
+        username: payload.username,
+        password: payload.password
+      }
+    }, { root: true })
 
+    commit('setLogin', {
+      jwt,
+      username: payload.username
+    })
   },
-  async register ({ commit }, payload) {
+  async register ({ commit, dispatch }, payload) {
+    const jwt = await dispatch('websocket/rpc', {
+      command: 'register',
+      params: {
+        username: payload.username,
+        password: payload.password
+      }
+    }, { root: true })
 
+    commit('setLogin', {
+      jwt,
+      username: payload.username
+    })
   }
 }
 

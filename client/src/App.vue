@@ -9,8 +9,9 @@
       </v-toolbar-title>
       <v-spacer />
       <v-btn
+        color="primary"
         text
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
+        href="https://github.com/Nightmarlin/cards-against-naptime"
         target="_blank"
       >
         <span class="mr-2">Check out the repo</span>

@@ -23,6 +23,20 @@
                   <br />
                   <span v-html="marked(timelineObj.text)" />
                 </v-card-text>
+
+                <v-card-actions>
+                  <v-layout justify-space-around>
+                  <v-flex
+                    v-for="(ico, i) in timelineObj.bottomIcons"
+                    :key="i"
+                    shrink
+                  >
+                    <v-icon>
+                    mdi-{{ ico }}
+                    </v-icon>
+                  </v-flex>
+                  </v-layout>
+                </v-card-actions>
               </v-card>
 
             </v-timeline-item>
@@ -55,8 +69,8 @@ export default {
           dotCol: 'blue',
           iconCol: 'white',
           title: 'Cards Against Naptime',
-          text: `TFW no QT SO`,
-          bottomIcons: []
+          text: `Here for all of your Cards Against Humanity ripoff needs`,
+          bottomIcons: ['sleep-off']
         },
         {
           icon: 'mdi-all-inclusive',
@@ -70,7 +84,7 @@ It's gonna feature cool stuff like:\n
 * Viewing your sweet, sweet stats: Show the world how much of an evil bastard you really are\n
 * Discord interactivity: organising a game has never been so simple
 `,
-          bottomIcons: [ 'mdi-play', 'mdi-wrench', 'mdi-chart-bar', 'mdi-discord' ]
+          bottomIcons: [ 'play', 'wrench', 'chart-bar', 'discord' ]
         },
         {
           icon: 'mdi-help',
@@ -78,7 +92,7 @@ It's gonna feature cool stuff like:\n
           iconCol: 'white',
           title: 'How to play',
           text: ``,
-          bottomIcons: []
+          bottomIcons: ['fire']
         }
       ]
     }

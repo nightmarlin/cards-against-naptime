@@ -12,7 +12,12 @@
       <v-card-actions>
         <v-btn class="btn" :color="`${initIsBlack ? 'primary' : 'error' }`" >click</v-btn>
         <v-spacer />
-        <v-img :src="cardQrCodeSrc" class="cardJsonImg"/>
+        <a
+          :href="cardDataUrl === '' ? '#' : cardDataUrl"
+          target="_blank"
+        >
+          <v-img :src="cardQrCodeSrc" class="cardJsonImg"/>
+        </a>
       </v-card-actions>
     </v-card>
   </v-hover>
@@ -41,7 +46,8 @@ export default {
       isSelected: false,
       isHovered: false,
 
-      cardQrCodeSrc: ''
+      cardQrCodeSrc: '',
+      cardDataUrl: ''
     }
   },
   computed: {
@@ -59,9 +65,9 @@ export default {
       cardSetId = 'CS' + csIdArr[1]
       cardId = csIdArr[2] + csIdArr[3]
 
-      let cardData = DATA_URL + `${cardSetId}/${cardId}`
+      this.cardDataUrl = DATA_URL + `${cardSetId}/${cardId}`
 
-      qrcode.toDataURL(cardData, { margin: 1, scale: 1, width: 100, height: 100 }, (err, url) => {
+      qrcode.toDataURL(this.cardDataUrl, { margin: 1, scale: 1, width: 100, height: 100 }, (err, url) => {
         if (err) console.error(err)
         this.cardQrCodeSrc = url
       })

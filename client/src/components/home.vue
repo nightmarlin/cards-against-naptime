@@ -75,7 +75,9 @@ export default {
           iconCol: 'white',
           title: 'Cards Against Naptime',
           text: `
-Here for all of your Cards Against Humanity ripoff needs
+Here for all of your Cards Against Humanity ripoff needs.
+
+If you're new, feel free to read on. If you know what you're doing, then go ahead and do it 💙
 `,
           bottomIcons: ['sleep-off'],
           expanded: true
@@ -113,9 +115,26 @@ Featuring cool stuff like:
   A. If creating a game, pick the decks you want to use
 
 3. Start Playing! The game will pick a Card Tsar - All you need to do is play your cards
+
+If you find a card or deck that you really like, you can scan or click the QR code to be taken to the deck's display page!
 `,
-          bottomIcons: ['fire'],
+          bottomIcons: ['fire', 'barcode-scan'],
           expanded: false
+        },
+        {
+          icon: 'mdi-database',
+          dotCol: 'blue-grey darken-2',
+          iconCol: 'white',
+          title: 'Our Relationship With Your Data',
+          text: `
+We don't want to fill this page with legalese, so [here's the full version](/#/tscs)
+
+To summarise:
+
+
+`,
+          bottomIcons: ['bank', 'briefcase', 'desktop-mac', 'safe'],
+          expanded: true
         }
       ]
     }

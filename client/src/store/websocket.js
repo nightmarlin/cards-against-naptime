@@ -16,7 +16,7 @@ const actions = {
     socket = new Socket('localhost:3000')
 
     socket.on('connect', () => {
-      commit('markConnectionStatus', false)
+      commit('markConnectionStatus', true)
     })
 
     socket.on('disconnect', () => {

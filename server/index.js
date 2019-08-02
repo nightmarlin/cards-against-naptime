@@ -26,7 +26,7 @@ app.get('/ready', (req, res) => {
   res.sendStatus(200)
 })
 
-const socketHandler = new SocketHandler(io)
+SocketHandler.setup(io)
 
 db.connect()
   .catch(err => {

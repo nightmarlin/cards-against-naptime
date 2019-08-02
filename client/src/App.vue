@@ -34,6 +34,9 @@ export default {
     return {
       //
     }
+  },
+  mounted () {
+    this.$store.dispatch('websocket/connect')
   }
 }
 </script>

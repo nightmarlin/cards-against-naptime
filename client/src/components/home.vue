@@ -79,7 +79,7 @@ Here for all of your Cards Against Humanity ripoff needs.
 
 If you're new, feel free to read on. If you know what you're doing, then go ahead and do it 💙
 `,
-          bottomIcons: ['sleep-off'],
+          bottomIcons: ['creation', 'sleep-off', 'death-star'],
           expanded: true
         },
         {
@@ -110,15 +110,19 @@ Featuring cool stuff like:
           text: `
 1. Sign Up or Log In using the box on the left
 
-2. Join or Create a game
+2. Join or Create a game. You might need a password. If creating a game, read the rest of this point
 
-  A. If creating a game, pick the decks you want to use
+  I. Set a Name (and Password if you want to keep things to yourself)
+
+  II. Pick a ruleset - Set maximum points, time limits etc...
+
+  III. CHOOSE YOUR CARDS! Pick a deck (or a set of decks) and a number of blank cards
 
 3. Start Playing! The game will pick a Card Tsar - All you need to do is play your cards
 
 If you find a card or deck that you really like, you can scan or click the QR code to be taken to the deck's display page!
 `,
-          bottomIcons: ['fire', 'barcode-scan'],
+          bottomIcons: ['pizza', 'looks', 'barcode-scan'],
           expanded: false
         },
         {
@@ -127,13 +131,17 @@ If you find a card or deck that you really like, you can scan or click the QR co
           iconCol: 'white',
           title: 'Our Relationship With Your Data',
           text: `
-We don't want to fill this page with legalese, so [here's the full version](/#/tscs)
+We don't want to fill this page with legalese, so [here's the full version](/#/legal)
 
 To summarise:
 
+- We don't store data we don't need! All we need for you to play a game is a Username and Password!
 
+  - Please note that we cannot guarantee perfect security, so when setting a password make sure you haven't used it anywhere else.
+
+- We use cookies to keep you logged in and connected to our service.
 `,
-          bottomIcons: ['bank', 'briefcase', 'desktop-mac', 'safe'],
+          bottomIcons: ['bank', 'briefcase', 'cookie', 'safe'],
           expanded: true
         }
       ]

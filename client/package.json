@@ -15,6 +15,7 @@
     "qrcode": "^1.4.1",
     "roboto-fontface": "*",
     "sass-loader": "^7.1.0",
+    "socket.io-client": "^2.2.0",
     "typeface-comfortaa": "^0.0.76",
     "typeface-libre-barcode-39-extended-text": "^0.0.63",
     "typeface-nova-square": "^0.0.71",

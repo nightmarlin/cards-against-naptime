@@ -1,8 +1,6 @@
 {
   "legal": {},
   "home": {
-    "welcomeBackText": "Welcome back ",
-
     "timelineText": [
       {
         "title": "Cards Against Naptime",
@@ -21,5 +19,29 @@
         "text": "We don't want to fill this page with legalese, so [here's the full version](/#/legal)\n\nTo summarise:\n\n- We don't store data we don't need! All we need for you to play a game is a Username and Password!\n\n  - Please note that we cannot guarantee perfect security, so when setting a password make sure you haven't used it anywhere else.\n\n- We use cookies to keep track of how many users are using the service and when using Google Analytics."
       }
     ]
+  },
+  "loginBox": {
+    "returnGreeting": "Welcome back ",
+    "returnGreetingContext": "As you're already logged in, you can just click below to continue",
+    "signup": "Signup",
+    "login": "Login",
+    "username": "Username",
+    "password": "Password",
+    "hints": {
+      "username": "Must be unique (being funny is optional)",
+      "password": "We cannot guarantee perfect security. Do not use a password you have used elsewhere."
+    },
+    "errors": {
+      "username": {
+        "tooLong": "Usernames cannot be longer than 32 characters",
+        "notPresent": "Username is required",
+        "notUnique": "Usernames must be unique"
+      },
+      "password": {
+        "tooShort": "Passwords must be at least 4 characters",
+        "tooSimple": "Passwords must contain at least one upper and lower case character",
+        "notPresent": "Password is required"
+      }
+    }
   }
 }

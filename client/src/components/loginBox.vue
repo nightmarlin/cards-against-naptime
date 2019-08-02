@@ -2,11 +2,11 @@
   <v-fade-transition>
     <v-card v-if="isLoggedIn">
       <v-card-title>
-        <h2 class="text display-1">Welcome back {{ loggedInUsername }}</h2>
+        <h2 class="text display-1">{{ i18n.loginBox.returnGreeting }}{{ loggedInUsername }}</h2>
       </v-card-title>
 
       <v-card-text>
-        <p class="text body-1">As you're already logged in, you can just click below to continue</p>
+        <p class="text body-1">{{ i18n.loginBox.returnGreetingContext }}</p>
       </v-card-text>
 
       <v-card-actions>
@@ -49,22 +49,22 @@
                     <v-text-field
                       :counter="formRules.usernameMaxLength"
                       v-model="username"
-                      label="Username"
-                      :hint="`${t.name === 'Signup' ? 'Must be unique (being funny is optional)' : '' }`"
-                      :rules="t.name === 'Signup' ? formRules.usernameRules : []"
+                      :label="i18n.loginBox.username"
+                      :hint="`${t.name === i18n.loginBox.signup ? i18n.loginBox.hints.username : '' }`"
+                      :rules="t.name === i18n.loginBox.signup ? formRules.usernameRules : []"
                     />
 
                     <v-text-field
                       v-model="password"
-                      label="Password"
-                      :hint="`${t.name === 'Signup' ? 'We cannot guarantee perfect security. Do not use a password you have used elsewhere.' : '' }`"
-                      :rules="t.name === 'Signup' ? formRules.pswdRules : []"
+                      :label="i18n.loginBox.password"
+                      :hint="`${t.name === i18n.loginBox.signup ? i18n.loginBox.hints.password : '' }`"
+                      :rules="t.name === i18n.loginBox.signup ? formRules.pswdRules : []"
                     />
 
                     <br />
 
                     <v-btn
-                      :color="`${t.name === 'Signup' ? 'teal lighten-3' : 'primary' }`"
+                      :color="`${t.name === i18n.loginBox.signup ? 'teal lighten-3' : 'primary' }`"
                       @click="interactionButton(t)"
                       :disabled="loading"
                       :loading="loading"
@@ -86,6 +86,8 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
+const I18N = require('../i18n/en.json')
+
 export default {
   name: 'loginBox',
   props: {
@@ -101,6 +103,7 @@ export default {
   },
   data () {
     return {
+      i18n: I18N,
       username: '',
       password: '',
       isSignUp: false,
@@ -108,20 +111,20 @@ export default {
 
       tab: null,
       tabs: [
-        { name: 'Login', icon: 'mdi-login' },
-        { name: 'Signup', icon: 'mdi-pen' }
+        { name: this.i18n.loginBox.login, icon: 'mdi-login' },
+        { name: this.i18n.loginBox.signup, icon: 'mdi-pen' }
       ],
 
       formRules: {
         usernameMaxLength: 32,
         usernameRules: [
-          u => !!u || 'Username is required',
-          u => (u && u.length <= 32) || 'Usernames cannot be longer than 32 characters'
+          u => !!u || this.i18n.loginBox.errors.username.notPresent,
+          u => (u && u.length <= 32) || this.i18n.loginBox.errors.username.tooLong
         ],
         pswdRules: [
-          p => !!p || 'Password is required',
-          p => (p && (p.length >= 4)) || 'Passwords must be at least 4 characters',
-          p => (p && (p.toUpperCase() !== p) && (p.toLowerCase() !== p)) || 'Passwords must contain at least one upper and lower case character'
+          p => !!p || this.i18n.loginBox.errors.password.notPresent,
+          p => (p && (p.length >= 4)) || this.i18n.loginBox.errors.password.tooShort,
+          p => (p && (p.toUpperCase() !== p) && (p.toLowerCase() !== p)) || this.i18n.loginBox.errors.password.tooSimple
         ]
       }
     }
@@ -135,7 +138,7 @@ export default {
     async interactionButton (t) {
       this.loading = true
 
-      const action = t.name === 'Login' ? 'user/login' : 'user/register'
+      const action = t.name === this.i18n.loginBox.login ? 'user/login' : 'user/register'
       await this.$store.dispatch(action, {
         username: this.username,
         password: this.password

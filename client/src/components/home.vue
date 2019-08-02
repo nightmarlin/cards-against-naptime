@@ -60,6 +60,7 @@
 <script>
 import loginBox from './loginBox'
 const MARKED = require('marked')
+const i18n = require('../i18n/en.json')
 
 export default {
   name: 'Home',
@@ -73,12 +74,8 @@ export default {
           icon: 'mdi-sleep-off',
           dotCol: 'blue',
           iconCol: 'white',
-          title: 'Cards Against Naptime',
-          text: `
-Here for all of your Cards Against Humanity ripoff needs.
-
-If you're new, feel free to read on. If you know what you're doing, then go ahead and do it 💙
-`,
+          title: i18n.home.timelineText[0].title,
+          text: i18n.home.timelineText[0].text,
           bottomIcons: ['creation', 'sleep-off', 'death-star'],
           expanded: true
         },
@@ -86,19 +83,8 @@ If you're new, feel free to read on. If you know what you're doing, then go ahea
           icon: 'mdi-all-inclusive',
           dotCol: 'red',
           iconCol: 'white',
-          title: 'Why we\'re here and what we do',
-          text: `
-So basically we got tired of the only decent CAH clone being PretendYoureXyzzy, so we made our own.
-Featuring cool stuff like:
-
-* Playing games of Cards Against Naptime: OF COURSE
-
-* Building your own card decks: Try to keep it funny
-
-* Viewing your sweet, sweet stats: Show the world how much of an evil bastard you really are
-
-* Discord interactivity: organising a game has never been so simple
-`,
+          title: i18n.home.timelineText[1].title,
+          text: i18n.home.timelineText[1].text,
           bottomIcons: [ 'play', 'wrench', 'chart-bar', 'discord' ],
           expanded: false
         },
@@ -106,22 +92,8 @@ Featuring cool stuff like:
           icon: 'mdi-help',
           dotCol: 'green',
           iconCol: 'white',
-          title: 'How to play',
-          text: `
-1. Sign Up or Log In using the box on the left
-
-2. Join or Create a game. You might need a password. If creating a game, read the rest of this point
-
-  I. Set a Name (and Password if you want to keep things to yourself)
-
-  II. Pick a ruleset - Set maximum points, time limits etc...
-
-  III. CHOOSE YOUR CARDS! Pick a deck (or a set of decks) and a number of blank cards
-
-3. Start Playing! The game will pick a Card Tsar - All you need to do is play your cards
-
-If you find a card or deck that you really like, you can scan or click the QR code to be taken to the deck's display page!
-`,
+          title: i18n.home.timelineText[2].title,
+          text: i18n.home.timelineText[2].text,
           bottomIcons: ['pizza', 'looks', 'barcode-scan'],
           expanded: false
         },
@@ -129,18 +101,8 @@ If you find a card or deck that you really like, you can scan or click the QR co
           icon: 'mdi-database',
           dotCol: 'blue-grey darken-2',
           iconCol: 'white',
-          title: 'Our Relationship With Your Data',
-          text: `
-We don't want to fill this page with legalese, so [here's the full version](/#/legal)
-
-To summarise:
-
-- We don't store data we don't need! All we need for you to play a game is a Username and Password!
-
-  - Please note that we cannot guarantee perfect security, so when setting a password make sure you haven't used it anywhere else.
-
-- We use cookies to keep you logged in and connected to our service.
-`,
+          title: i18n.home.timelineText[3].title,
+          text: i18n.home.timelineText[3].text,
           bottomIcons: ['bank', 'briefcase', 'cookie', 'safe'],
           expanded: true
         }

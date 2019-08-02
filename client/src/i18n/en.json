@@ -1,0 +1,25 @@
+{
+  "legal": {},
+  "home": {
+    "welcomeBackText": "Welcome back ",
+
+    "timelineText": [
+      {
+        "title": "Cards Against Naptime",
+        "text": "Here for all of your Cards Against Humanity ripoff needs.\n\nIf you're new, feel free to read on. If you know what you're doing, then go ahead and do it 💙"
+      },
+      {
+        "title": "Why We're Here and What We do",
+        "text": "So basically we got tired of the only decent CAH clone being PretendYoureXyzzy, so we made our own.\nFeaturing cool stuff like:\n\n* Playing games of Cards Against Naptime: OF COURSE\n\n* Building your own card decks: Try to keep it funny\n\n* Viewing your sweet, sweet stats: Show the world how much of an evil bastard you really are\n\n* Discord interactivity: organising a game has never been so simple"
+      },
+      {
+        "title": "How to Play",
+        "text": "1. Sign Up or Log In using the box on the left\n\n2. Join or Create a game. You might need a password. If creating a game, read the rest of this point\n\nI. Set a Name (and Password if you want to keep things to yourself)\n\nII. Pick a ruleset - Set maximum points, time limits etc...\n\nIII. CHOOSE YOUR CARDS! Pick a deck (or a set of decks) and a number of blank cards\n\n3. Start Playing! The game will pick a Card Tsar - All you need to do is play your cards\n\nIf you find a card or deck that you really like, you can scan or click the QR code to be taken to the deck's display page!"
+      },
+      {
+        "title": "Our Relationship With Your Data",
+        "text": "We don't want to fill this page with legalese, so [here's the full version](/#/legal)\n\nTo summarise:\n\n- We don't store data we don't need! All we need for you to play a game is a Username and Password!\n\n  - Please note that we cannot guarantee perfect security, so when setting a password make sure you haven't used it anywhere else.\n\n- We use cookies to keep track of how many users are using the service and when using Google Analytics."
+      }
+    ]
+  }
+}

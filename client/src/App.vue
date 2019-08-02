@@ -1,11 +1,13 @@
 <template>
   <v-app>
     <v-toolbar app>
+      <v-icon large color="primary">mdi-sleep-off</v-icon>
+      <v-spacer />
       <v-toolbar-title class="headline text-uppercase">
         <span>CARDS </span>
         <span class="font-weight-light">Against Naptime</span>
       </v-toolbar-title>
-      <v-spacer></v-spacer>
+      <v-spacer />
       <v-btn
         flat
         href="https://github.com/vuetifyjs/vuetify/releases/latest"

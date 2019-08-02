@@ -1,7 +1,11 @@
 <template>
-  <v-layout>
+  <v-layout row>
 
-    <v-flex xs8> <!-- Splash -->
+    <v-flex sm12 md4 pa-4 align-self-top> <!-- Login -->
+      <login-box :loginStatus="userLoginStatus" />
+    </v-flex>
+
+    <v-flex sm12 md8> <!-- Splash -->
       <v-layout fill-height justify-center>
         <v-flex xs12 md10 xl8>
           <v-timeline reverse :dense="$vuetify.breakpoint.mdAndDown">
@@ -48,10 +52,6 @@
           </v-timeline>
         </v-flex>
       </v-layout>
-    </v-flex>
-
-    <v-flex xs4 pa-4 align-self-top> <!-- Login -->
-      <login-box />
     </v-flex>
 
   </v-layout>
@@ -144,7 +144,8 @@ To summarise:
           bottomIcons: ['bank', 'briefcase', 'cookie', 'safe'],
           expanded: true
         }
-      ]
+      ],
+      userLoginStatus: { isLoggedIn: true, username: 'ℵightmarlin', userHash: 111 }
     }
   },
   methods: {

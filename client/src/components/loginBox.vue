@@ -1,8 +1,24 @@
 <template>
   <v-card>
+  <!--v-fade-transition-->
+
+    <v-card-title v-show="loginStatus.isLoggedIn">
+      <h2 class="text display-1">Welcome back {{ loginStatus.username }}</h2>
+    </v-card-title>
+
+    <v-card-text v-show="loginStatus.isLoggedIn">
+      <p class="text body-1">As you're already logged in, you can just click below to continue</p>
+    </v-card-text>
+
+    <v-card-actions v-show="loginStatus.isLoggedIn">
+      <v-spacer />
+      <v-btn>Continue<v-icon>mdi-login</v-icon></v-btn>
+    </v-card-actions>
+
     <v-tabs
       dark
       v-model="tab"
+      v-show="!loginStatus.isLoggedIn"
     >
 
       <v-tab
@@ -61,12 +77,17 @@
       </v-tab-item>
 
     </v-tabs>
+
+  <!--/v-fade-transition-->
   </v-card>
 </template>
 
 <script>
 export default {
   name: 'loginBox',
+  props: {
+    loginStatus: Object
+  },
   data () {
     return {
       username: '',

@@ -24,6 +24,10 @@
         <router-view/>
       </v-container>
     </v-content>
+
+    <v-footer app>
+      ℵightmarlin &amp; Strideynet &copy; 2019
+    </v-footer>
   </v-app>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <v-toolbar app>
-      <v-icon large color="primary">mdi-sleep-off</v-icon>
+    <v-app-bar app>
+      <v-icon color="primary">mdi-sleep-off</v-icon>
       <v-spacer />
       <v-toolbar-title class="headline text-uppercase">
         <span>CARDS </span>
@@ -9,14 +9,14 @@
       </v-toolbar-title>
       <v-spacer />
       <v-btn
-        flat
+        text
         href="https://github.com/vuetifyjs/vuetify/releases/latest"
         target="_blank"
       >
         <span class="mr-2">Check out the repo</span>
         <v-icon>mdi-github-box</v-icon>
       </v-btn>
-    </v-toolbar>
+    </v-app-bar>
 
     <v-content>
       <v-container>

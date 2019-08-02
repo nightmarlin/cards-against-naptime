@@ -27,39 +27,48 @@
     </v-flex>
 
     <v-flex xs4> <!-- Login -->
-      //
+      <login-box />
     </v-flex>
 
   </v-layout>
 </template>
 
 <script>
+import loginBox from './loginBox'
 const MARKED = require('marked')
 
 export default {
   name: 'Home',
+  components: {
+    loginBox
+  },
   data () {
     return {
       timelineObjs: [
         {
-          icon: 'mdi-star',
+          icon: 'mdi-sleep-off',
           dotCol: 'blue',
-          iconCol: 'primary',
+          iconCol: 'white',
           title: 'Cards Against Naptime',
           text: `TFW no QT SO`
         },
         {
-          icon: 'mdi-star',
+          icon: 'mdi-all-inclusive',
           dotCol: 'red',
-          iconCol: 'secondary',
+          iconCol: 'white',
           title: 'Why we\'re here and what we do',
           text: `So basically we got tired of the only decent CAH clone being PretendYoureXyzzy, so we made our own.
-          It's gonna feature cool shit like *memes*`
+It's gonna feature cool stuff like:\n
+* Playing games of Cards Against Naptime: OF COURSE\n
+* Building your own card decks: Try to keep it funny\n
+* Viewing your sweet, sweet stats: Show the world how much of an evil bastard you really are\n
+* Discord interactivity: organising a game has never been so simple\n
+`
         },
         {
-          icon: 'mdi-star',
+          icon: 'mdi-help',
           dotCol: 'green',
-          iconCol: '',
+          iconCol: 'white',
           title: 'How to play',
           text: ``
         }

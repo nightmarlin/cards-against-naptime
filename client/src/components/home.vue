@@ -4,11 +4,10 @@
     <v-flex xs8> <!-- Splash -->
       <v-layout fill-height justify-center>
         <v-flex xs12 md10 xl8>
-          <v-timeline :dense="$vuetify.breakpoint.mdAndDown">
+          <v-timeline reverse :dense="$vuetify.breakpoint.mdAndDown">
             <v-timeline-item
 
               fill-dot
-              align-top
 
               v-for="(timelineObj, i) in timelineObjs"
               :key="i"
@@ -17,18 +16,24 @@
               :color="timelineObj.dotCol"
             >
 
-              <v-card class="elevation-2" :color="timelineObj.dotCol" dark>
-                <v-card-title class="headline">{{ timelineObj.title }}</v-card-title>
-                <v-card-text class="white text--primary">
-                  <br />
-                  <span v-html="marked(timelineObj.text)" />
-                </v-card-text>
+              <v-card class="elevation-2" :color="timelineObj.dotCol" dark @click="timelineObj.expanded = !timelineObj.expanded">
+                <v-card-title class="headline">
+                  {{ timelineObj.title }}
+                  <v-spacer />
+                  <v-icon transition="fade-transition">mdi-{{ timelineObj.expanded ? 'chevron-up' : 'chevron-down' }}</v-icon>
+                </v-card-title>
+                <v-expand-transition>
+                  <v-card-text class="white text--primary" v-show="timelineObj.expanded">
+                    <br />
+                    <span v-html="marked(timelineObj.text)" />
+                  </v-card-text>
+                </v-expand-transition>
 
                 <v-card-actions>
                   <v-layout justify-space-around>
                   <v-flex
-                    v-for="(ico, i) in timelineObj.bottomIcons"
-                    :key="i"
+                    v-for="(ico, idx) in timelineObj.bottomIcons"
+                    :key="idx"
                     shrink
                   >
                     <v-icon>
@@ -45,7 +50,7 @@
       </v-layout>
     </v-flex>
 
-    <v-flex xs4 align-self-center> <!-- Login -->
+    <v-flex xs4 pa-4 align-self-top> <!-- Login -->
       <login-box />
     </v-flex>
 
@@ -69,30 +74,48 @@ export default {
           dotCol: 'blue',
           iconCol: 'white',
           title: 'Cards Against Naptime',
-          text: `Here for all of your Cards Against Humanity ripoff needs`,
-          bottomIcons: ['sleep-off']
+          text: `
+Here for all of your Cards Against Humanity ripoff needs
+`,
+          bottomIcons: ['sleep-off'],
+          expanded: true
         },
         {
           icon: 'mdi-all-inclusive',
           dotCol: 'red',
           iconCol: 'white',
           title: 'Why we\'re here and what we do',
-          text: `So basically we got tired of the only decent CAH clone being PretendYoureXyzzy, so we made our own.
-It's gonna feature cool stuff like:\n
-* Playing games of Cards Against Naptime: OF COURSE\n
-* Building your own card decks: Try to keep it funny\n
-* Viewing your sweet, sweet stats: Show the world how much of an evil bastard you really are\n
+          text: `
+So basically we got tired of the only decent CAH clone being PretendYoureXyzzy, so we made our own.
+Featuring cool stuff like:
+
+* Playing games of Cards Against Naptime: OF COURSE
+
+* Building your own card decks: Try to keep it funny
+
+* Viewing your sweet, sweet stats: Show the world how much of an evil bastard you really are
+
 * Discord interactivity: organising a game has never been so simple
 `,
-          bottomIcons: [ 'play', 'wrench', 'chart-bar', 'discord' ]
+          bottomIcons: [ 'play', 'wrench', 'chart-bar', 'discord' ],
+          expanded: false
         },
         {
           icon: 'mdi-help',
           dotCol: 'green',
           iconCol: 'white',
           title: 'How to play',
-          text: ``,
-          bottomIcons: ['fire']
+          text: `
+1. Sign Up or Log In using the box on the left
+
+2. Join or Create a game
+
+  A. If creating a game, pick the decks you want to use
+
+3. Start Playing! The game will pick a Card Tsar - All you need to do is play your cards
+`,
+          bottomIcons: ['fire'],
+          expanded: false
         }
       ]
     }

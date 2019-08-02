@@ -19,7 +19,7 @@
     </v-app-bar>
 
     <v-content>
-      <v-container>
+      <v-container grid-list-md fluid >
         <router-view/>
       </v-container>
     </v-content>

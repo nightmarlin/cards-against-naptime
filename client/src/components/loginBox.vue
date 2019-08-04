@@ -22,8 +22,8 @@
 
         <v-tab
           v-for="(t, i) in tabs"
-          :key="i"
-          :href="`#tab-${t.name}`"
+          :key="'tab-' + i"
+          :href="`#tab-${t.tabType}`"
         >
           {{ t.name }}
           <v-icon> {{ t.icon }} </v-icon>
@@ -32,7 +32,7 @@
         <v-tab-item
           v-for="(t, i) in tabs"
           :key="i"
-          :value="`tab-${t.name}`"
+          :value="`tab-${t.tabType}`"
         >
 
           <v-card
@@ -50,21 +50,21 @@
                       :counter="formRules.usernameMaxLength"
                       v-model="username"
                       :label="i18n.loginBox.username"
-                      :hint="`${t.name === i18n.loginBox.signup ? i18n.loginBox.hints.username : '' }`"
-                      :rules="t.name === i18n.loginBox.signup ? formRules.usernameRules : []"
+                      :hint="`${t.tabType === 'signup' ? i18n.loginBox.hints.username : '' }`"
+                      :rules="t.tabType === 'signup' ? formRules.usernameRules : []"
                     />
 
                     <v-text-field
                       v-model="password"
                       :label="i18n.loginBox.password"
-                      :hint="`${t.name === i18n.loginBox.signup ? i18n.loginBox.hints.password : '' }`"
-                      :rules="t.name === i18n.loginBox.signup ? formRules.pswdRules : []"
+                      :hint="`${t.tabType === 'signup' ? i18n.loginBox.hints.password : '' }`"
+                      :rules="t.tabType === 'signup' ? formRules.pswdRules : []"
                     />
 
                     <br />
 
                     <v-btn
-                      :color="`${t.name === i18n.loginBox.signup ? 'teal lighten-3' : 'primary' }`"
+                      :color="`${t.tabType === 'signup' ? 'teal lighten-3' : 'primary' }`"
                       @click="interactionButton(t)"
                       :disabled="loading"
                       :loading="loading"
@@ -103,7 +103,6 @@ export default {
   },
   data () {
     return {
-      i18n: I18N,
       username: '',
       password: '',
       isSignUp: false,
@@ -111,8 +110,8 @@ export default {
 
       tab: null,
       tabs: [
-        { name: this.i18n.loginBox.login, icon: 'mdi-login' },
-        { name: this.i18n.loginBox.signup, icon: 'mdi-pen' }
+        { tabType: 'login', name: '', icon: 'mdi-login' },
+        { tabType: 'signup', name: '', icon: 'mdi-pen' }
       ],
 
       formRules: {
@@ -126,7 +125,8 @@ export default {
           p => (p && (p.length >= 4)) || this.i18n.loginBox.errors.password.tooShort,
           p => (p && (p.toUpperCase() !== p) && (p.toLowerCase() !== p)) || this.i18n.loginBox.errors.password.tooSimple
         ]
-      }
+      },
+      i18n: I18N
     }
   },
   methods: {
@@ -146,6 +146,10 @@ export default {
 
       this.loading = false
     }
+  },
+  mounted: function () {
+    this.tabs[0].name = this.i18n.loginBox.login
+    this.tabs[1].name = this.i18n.loginBox.signup
   }
 }
 </script>

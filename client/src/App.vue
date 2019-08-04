@@ -27,7 +27,7 @@
     </v-content>
 
     <v-footer app>
-      ℵightmarlin &amp; Strideynet &copy; 2019
+      &#1488;ightmarlin &amp; Strideynet &copy; 2019
     </v-footer>
   </v-app>
 </template>

@@ -28,6 +28,11 @@ export default new Router({
       path: '/legal',
       name: 'legal',
       component: () => import(/* webpackChunkName: "legal" */ './views/Legal.vue')
+    },
+    {
+      path: '/serverlist',
+      name: 'serverlist',
+      component: () => import(/* webpackChunkName: "serverlist" */ './views/ServerList.vue')
     }
   ]
 })

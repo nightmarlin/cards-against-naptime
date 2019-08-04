@@ -1,5 +1,5 @@
 <template>
-  <card cardUid="CS001WC001" initText="Let's go" :initIsBlack="true" />
+  <card card-uid="CS001WC001" init-text="Let's go" :init-is-black="true" />
 </template>
 
 <script>

@@ -1,5 +1,4 @@
 {
-  "legal": {},
   "home": {
     "timelineText": [
       {
@@ -43,5 +42,9 @@
         "notPresent": "Password is required"
       }
     }
+  },
+  "legal": { },
+  "serverList": {
+    "testDesc": "test"
   }
 }

@@ -243,3 +243,10 @@ export default {
   name: 'canLogo'
 }
 </script>
+
+<style lang="sass" scoped>
+
+.your-svg-icon
+  fill: currentColor
+
+</style>

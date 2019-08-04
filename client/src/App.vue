@@ -3,7 +3,7 @@
     <v-app-bar app>
       <v-icon color="primary">mdi-sleep-off</v-icon>
       <v-spacer />
-      <v-toolbar-title class="headline text-uppercase">
+      <v-toolbar-title class="headline text-uppercase" v-show="$vuetify.breakpoint.smAndUp">
         <span>CARDS </span>
         <span class="font-weight-light">Against Naptime</span>
       </v-toolbar-title>
@@ -13,6 +13,7 @@
         text
         href="https://github.com/Nightmarlin/cards-against-naptime"
         target="_blank"
+        v-show="$vuetify.breakpoint.mdAndUp"
       >
         <span class="mr-2">Check out the repo</span>
         <v-icon>mdi-github-box</v-icon>

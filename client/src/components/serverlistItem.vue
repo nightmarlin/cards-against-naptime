@@ -7,7 +7,9 @@
 export default {
   name: 'serverListItem',
   data () {
-    return { }
+    return {
+      //
+    }
   },
   props: {
     serverObj: {

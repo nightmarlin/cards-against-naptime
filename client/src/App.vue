@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <v-app-bar app>
-      <v-icon color="primary">mdi-sleep-off</v-icon>
+    <v-app-bar dark app>
+      <v-icon large>$vuetify.icons.canLogo</v-icon>
       <v-spacer />
       <v-toolbar-title class="headline text-uppercase" v-show="$vuetify.breakpoint.smAndUp">
         <span>CARDS </span>

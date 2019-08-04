@@ -64,6 +64,7 @@
                     <br />
 
                     <v-btn
+                      rounded
                       :color="`${t.tabType === 'signup' ? 'teal lighten-3' : 'primary' }`"
                       @click="interactionButton(t)"
                       :disabled="loading"

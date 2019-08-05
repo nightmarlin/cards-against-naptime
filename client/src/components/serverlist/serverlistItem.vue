@@ -2,22 +2,22 @@
   <v-card>
     <v-card-title>
       <div class="title">
-        {{ serverObj.name }}
+        {{ server.name }}
       </div>
 
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
           <v-icon v-on="on" right>
-            mdi-{{ serverObj.password ? 'lock' : 'lock-open-variant-outline' }}
+            mdi-{{ server.password ? 'lock' : 'lock-open-variant-outline' }}
           </v-icon>
         </template>
-        <span>{{ serverObj.password ? 'This game requires a password' : 'Open game, no password needed' }}</span>
+        <span>{{ server.password ? 'This game requires a password' : 'Open game, no password needed' }}</span>
       </v-tooltip>
     </v-card-title>
 
     <v-card-text>
       <div class="text-truncate">
-        {{ serverObj.description }}
+        {{ server.description }}
       </div>
     </v-card-text>
 
@@ -26,41 +26,61 @@
     <v-card-text>
       <v-container>
         <v-layout row>
-          <v-flex xs8 sm8 md8 lg8 xl8> <!-- Decks in use -->
-            <v-card dark outlined>
-              <v-card-title>
+          <v-flex xs12 sm12 md8 lg8 xl8> <!-- Decks in use -->
+            <v-card
+              :dark="darkColor"
+              :color="server.accentColor"
+              outlined
+              :ripple="$vuetify.breakpoint.smAndDown"
+            >
+
+              <v-card-title
+                @click="showList = !showList"
+              >
                 <div class="text subtitle-1">Decks in use</div>
                 <v-spacer />
                 <v-icon>mdi-cards</v-icon>
               </v-card-title>
               <v-divider />
-              <v-list light dense class="overflow-y-auto" max-height="250">
-                <v-list-item
-                  v-for="(d, i) in serverObj.decks"
-                  :key="`deck-${i}`"
-                >
-                  <v-list-item-content>
-                    <v-list-item-title>{{ d.name }}</v-list-item-title>
-                    <v-list-item-subtitle>{{ d.description }}</v-list-item-subtitle>
-                  </v-list-item-content>
 
-                  <v-list-item-icon>
-                    <a
-                      :href="dataUrl + d.id"
-                      target="_blank"
-                    >
-                      <v-icon color="primary" small>mdi-open-in-new</v-icon>
-                    </a>
-                  </v-list-item-icon>
-                </v-list-item>
-              </v-list>
+              <v-expand-transition>
+                <v-list
+                  dense
+                  class="overflow-y-auto"
+                  max-height="250"
+                  v-show="($vuetify.breakpoint.mdAndUp || showList)"
+                >
+                  <v-list-item
+                    v-for="(d, i) in server.decks"
+                    :key="`deck-${i}`"
+                  >
+                    <v-list-item-content>
+                      <v-list-item-title>{{ d.name }}</v-list-item-title>
+                      <v-list-item-subtitle>{{ d.description }}</v-list-item-subtitle>
+                      <v-list-item-subtitle>
+                        CARDS: {{ d.cards.black }} BLACK / {{ d.cards.white }} WHITE / {{ d.cards.blank }} BLANK
+                      </v-list-item-subtitle>
+                    </v-list-item-content>
+
+                    <v-list-item-icon>
+                      <a
+                        :href="dataUrl + d.id"
+                        target="_blank"
+                      >
+                        <v-icon :color="server.accentColor" small>mdi-open-in-new</v-icon>
+                      </a>
+                    </v-list-item-icon>
+                  </v-list-item>
+                </v-list>
+              </v-expand-transition>
+
             </v-card>
           </v-flex>
 
           <v-flex grow> <!-- Member info -->
-            <v-card dark outlined class="fill-height">
+            <v-card :dark="darkColor" :color="server.accentColor" outlined class="fill-height">
               <v-card-title>
-                <div class="text subtitle-1">Members{{ serverObj.spectators.enabled ? ' and Spectators' : '' }}</div>
+                <div class="text subtitle-1">Members{{ server.spectators.enabled ? ' and Spectators' : '' }}</div>
                 <v-spacer />
                 <v-icon>mdi-account-group</v-icon>
               </v-card-title>
@@ -69,13 +89,13 @@
 
               <v-card-text>
                 <div class="headline">
-                  {{ serverObj.memberCount }} / {{ serverObj.maxMemberCount }} Members
+                  {{ server.memberCount }} / {{ server.maxMemberCount }} Members
                 </div>
 
                 <br />
 
-                <div class="headline" v-show="serverObj.spectators.enabled">
-                  {{ serverObj.spectators.spectatorCount }} / {{ serverObj.spectators.maxSpectatorCount }} Spectators
+                <div class="headline" v-show="server.spectators.enabled">
+                  {{ server.spectators.spectatorCount }} / {{ server.spectators.maxSpectatorCount }} Spectators
                 </div>
               </v-card-text>
             </v-card>
@@ -89,7 +109,7 @@
       <v-btn
         class="mx-3"
         large
-        color="primary"
+        :color="server.accentColor"
         @click="joinClicked"
       >
         Join
@@ -100,7 +120,7 @@
         class="mx-3"
         large
         color="secondary"
-        v-show="serverObj.spectators.enabled"
+        v-show="server.spectators.enabled"
         @click="spectateClicked"
       >
         Spectate
@@ -146,20 +166,23 @@
 </template>
 
 <script>
+const color = require('color')
 const DATA_URL = 'https://api.cardsagainstnaptime.com/cs/'
 export default {
   name: 'serverlistItem',
   data () {
     return {
+      darkColor: false,
       dataUrl: DATA_URL,
-      passwordOverlay: false,
-      joining: null, // true: join game, false: spectate game
       enteredPassword: '',
+      joining: null, // true: join game, false: spectate game
+      passwordOverlay: false,
+      showList: false,
       showPasswordtext: false
     }
   },
   props: {
-    serverObj: {
+    server: {
       type: Object,
       required: true
     }
@@ -169,7 +192,7 @@ export default {
     joinClicked () {
       this.joining = true
 
-      if (this.serverObj.password) {
+      if (this.server.password) {
         this.passwordOverlay = true
       } else {
         this.enter()
@@ -178,7 +201,7 @@ export default {
     spectateClicked () {
       this.joining = false
 
-      if (this.serverObj.password) {
+      if (this.server.password) {
         this.passwordOverlay = true
       } else {
         this.enter()
@@ -190,6 +213,9 @@ export default {
       this.joining = null
       this.enteredPassword = ''
     }
+  },
+  mounted () {
+    this.darkColor = color(this.server.accentColor).isDark()
   }
 }
 </script>

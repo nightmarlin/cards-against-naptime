@@ -1,12 +1,12 @@
 <template>
-  <v-layout row justify-center >
+  <v-layout justify-center >
 
     <v-flex >
       <card card-uid="CS001WC001" init-text="Let's go" :init-is-black="true" />
     </v-flex>
 
     <v-flex>
-      <server-list-item :serverObj="testServer" />
+      <server-list-item :server="testServer" />
     </v-flex>
   </v-layout>
 </template>
@@ -22,11 +22,13 @@ export default {
   data () {
     return {
       testServer: {
+        author: 'Marlin',
+        accentColor: '#02222F',
         decks: [
-          { name: 'Default', description: 'Cood old CAN', id: 1 },
-          { name: 'Radix 8', description: 'Extra techy for those who need it', id: 2234 },
-          { name: 'Cards against kittens', description: 'aww', id: 543 },
-          { name: 'UK expansion pack 1', description: 'More cards for more fun', id: 222 }
+          { name: 'Default', description: 'Cood old CAN', id: 1, cards: { black: 50, blank: 2, white: 200 } },
+          { name: 'Radix 8', description: 'Extra techy for those who need it', id: 2234, cards: { black: 25, blank: 0, white: 100 } },
+          { name: 'Cards against kittens', description: 'aww', id: 543, cards: { black: 40, blank: 10, white: 150 } },
+          { name: 'UK expansion pack 1', description: 'More cards for more fun', id: 222, cards: { black: 10, blank: 2, white: 100 } }
         ],
         description: 'For funsies',
         maxMemberCount: '12',

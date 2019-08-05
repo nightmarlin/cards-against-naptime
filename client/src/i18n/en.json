@@ -1,4 +1,7 @@
 {
+  "app": {
+    "githubLink": "Check out the repo"
+  },
   "home": {
     "timelineText": [
       {
@@ -44,7 +47,21 @@
     }
   },
   "legal": { },
-  "serverList": {
-    "testDesc": "test"
+  "serverlistItem": {
+    "openGame": "Open game, no password needed",
+    "closedGame": "This game requires a password",
+    "createdBy": "Created by ",
+    "titleMembersAndSpectators": "Members and Spectators",
+    "members": "members",
+    "spectators": "spectators",
+    "decksInUse": "Decks in use",
+    "joinGame": "Join",
+    "spectateGame": "Spectate",
+    "password": {
+      "prompt": "Please enter the password to join the game",
+      "hint": "Ask the creator if you can't remember",
+      "go": "go",
+      "cancel": "cancel"
+    }
   }
 }

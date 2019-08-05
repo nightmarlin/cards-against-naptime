@@ -16,7 +16,7 @@
     "spectators": {
       "enabled": true,
       "maxSpectatorCount": 10,
-      "spectatorCount": 4
+      "spectatorCount": 10
     },
     "url": "become-cards-against-naptime"
   },
@@ -43,7 +43,7 @@
     "url": "seven-dwarves-napped-gently"
   },
   {
-    "author": "Marlin",
+    "author": "Deepvox",
     "accentColor": "#22F827",
     "decks": [
       { "name": "Default", "description": "Cood old CAN", "id": 1, "cards": { "black": 50, "blank": 2, "white": 200 } },
@@ -51,38 +51,37 @@
       { "name": "Cards against kittens", "description": "aww", "id": 543, "cards": { "black": 40, "blank": 10, "white": 150 } },
       { "name": "UK expansion pack 1", "description": "More cards for more fun", "id": 222, "cards": { "black": 10, "blank": 2, "white": 100 } }
     ],
-    "description": "For funsies",
-    "maxMemberCount": "12",
-    "memberCount": "6",
+    "description": "Kill me with a newspaper now, bish",
+    "maxMemberCount": "4",
+    "memberCount": "4",
     "name": "Test Server",
     "password": false,
     "spectators": {
       "enabled": true,
-      "maxSpectatorCount": 10,
-      "spectatorCount": 4
+      "maxSpectatorCount": 6,
+      "spectatorCount": 2
     },
-    "url": "become-cards-against-naptime"
+    "url": "im-actually-gonna-die"
   },
   {
-    "author": "Strideynet",
+    "author": "Avagin",
     "accentColor": "#6FC5E1",
     "decks": [
       { "name": "Default", "description": "Cood old CAN", "id": 1, "cards": { "black": 50, "blank": 2, "white": 200 } },
-      { "name": "AR", "description": "Augmented reality? what a joke", "id": 333, "cards": { "black": 25, "blank": 0, "white": 100 } },
-      { "name": "Australian expansion pack 2", "description": "G'day mate, lookin' like a good evenin' to throw some joeys on the barbie", "id": 11, "cards": { "black": 40, "blank": 10, "white": 150 } },
-      { "name": "UK expansion pack 1", "description": "More cards for more fun", "id": 222, "cards": { "black": 10, "blank": 2, "white": 100 } },
+      { "name": "The flames of the LGBT", "description": "A hot topic? Hell yes", "id": 333, "cards": { "black": 25, "blank": 0, "white": 100 } },
+      { "name": "Netherlands expansion pack 1", "description": "We brought back some ideas from Amsterdam", "id": 3214, "cards": { "black": 10, "blank": 2, "white": 100 } },
       { "name": "Cards against religion", "description": "And what do we say to Satan? 'TODAY!'", "id": 666, "cards": { "black": 66, "white": 666, "blank": 6 } }
     ],
-    "description": "Time for a good game. Don't let me down",
-    "maxMemberCount": "7",
-    "memberCount": "6",
-    "name": "Cards against Your Mother",
+    "description": "Heheh enjoy the cameo, kiddo",
+    "maxMemberCount": "9",
+    "memberCount": "2",
+    "name": "Solace",
     "password": true,
     "spectators": {
       "enabled": false,
       "maxSpectatorCount": null,
       "spectatorCount": null
     },
-    "url": "seven-dwarves-napped-gently"
+    "url": "the-skys-the-limit"
   }
 ]

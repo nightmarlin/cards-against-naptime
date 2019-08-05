@@ -110,6 +110,7 @@
         class="mx-3"
         large
         :color="server.accentColor"
+        :dark="darkColor"
         @click="joinClicked"
       >
         Join

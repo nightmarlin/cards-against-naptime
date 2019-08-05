@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify/lib'
-import canLogo from '../components/canLogo'
+import canLogo from '../components/app/canLogo'
 
 Vue.use(Vuetify)
 
@@ -11,8 +11,8 @@ export default new Vuetify({
       canLogo: {
         component: canLogo,
         props: {
-          height: 64,
-          width: 64
+          height: 128,
+          width: 128
         }
       }
     }

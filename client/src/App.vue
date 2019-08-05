@@ -1,7 +1,9 @@
 <template>
   <v-app>
 
-    <app-bar />
+    <app-bar @icon-clicked="drawer = !drawer" />
+
+    <nav-drawer /> <!-- TODO: Find a way to bind the app bar @icon-click event to opening this drawer -->
 
     <v-content>
       <v-container grid-list-md fluid >
@@ -16,16 +18,18 @@
 </template>
 
 <script>
-import appBar from './components/appBar'
+import appBar from './components/app/appBar'
+import navDrawer from './components/app/navDrawer'
 
 export default {
   name: 'App',
   components: {
-    appBar
+    appBar,
+    navDrawer
   },
   data () {
     return {
-      //
+      drawer: false
     }
   },
   mounted () {

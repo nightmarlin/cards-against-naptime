@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import serverListItem from '../components/serverlistItem'
+import serverListItem from '../components/serverlist/serverlistItem'
 const I18N = require('../i18n/en.json')
 
 export default {

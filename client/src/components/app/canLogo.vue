@@ -1,5 +1,6 @@
 <template>
   <svg
+    class="svg-icon"
     xmlns:dc="http://purl.org/dc/elements/1.1/"
     xmlns:cc="http://creativecommons.org/ns#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -249,13 +250,14 @@ export default {
       type: Number,
       required: true
     }
-  }
+  },
+  methods: { }
 }
 </script>
 
 <style lang="sass" scoped>
 
-.your-svg-icon
+.svg-icon
   fill: currentColor
 
 </style>

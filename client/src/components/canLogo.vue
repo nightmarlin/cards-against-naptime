@@ -7,8 +7,8 @@
     xmlns="http://www.w3.org/2000/svg"
     xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-    width="1024"
-    height="1024"
+    :width="width"
+    :height="height"
     viewBox="0 0 270.93333 270.93334"
     version="1.1"
     id="svg8"
@@ -240,7 +240,16 @@
 
 <script>
 export default {
-  name: 'canLogo'
+  name: 'canLogo',
+  props: {
+    height: {
+      type: Number
+    },
+    width: {
+      type: Number,
+      required: true
+    }
+  }
 }
 </script>
 

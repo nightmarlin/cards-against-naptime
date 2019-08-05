@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-app-bar dark app>
-      <v-icon large>$vuetify.icons.canLogo</v-icon>
+      <can-logo width="48" height="48"/>
       <v-spacer />
       <v-toolbar-title class="headline text-uppercase" v-show="$vuetify.breakpoint.smAndUp">
         <span>CARDS </span>
@@ -33,9 +33,12 @@
 </template>
 
 <script>
-
+import canLogo from './components/canLogo'
 export default {
   name: 'App',
+  components: {
+    canLogo
+  },
   data () {
     return {
       //

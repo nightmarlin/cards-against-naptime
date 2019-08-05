@@ -9,7 +9,11 @@ export default new Vuetify({
     iconfont: 'mdi',
     values: {
       canLogo: {
-        component: canLogo
+        component: canLogo,
+        props: {
+          height: 64,
+          width: 64
+        }
       }
     }
   }

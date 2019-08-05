@@ -1,24 +1,7 @@
 <template>
   <v-app>
-    <v-app-bar dark app>
-      <can-logo width="48" height="48"/>
-      <v-spacer />
-      <v-toolbar-title class="headline text-uppercase" v-show="$vuetify.breakpoint.smAndUp">
-        <span>CARDS </span>
-        <span class="font-weight-light">Against Naptime</span>
-      </v-toolbar-title>
-      <v-spacer />
-      <v-btn
-        color="primary"
-        text
-        href="https://github.com/Nightmarlin/cards-against-naptime"
-        target="_blank"
-        v-show="$vuetify.breakpoint.mdAndUp"
-      >
-        <span class="mr-2">Check out the repo</span>
-        <v-icon>mdi-github-box</v-icon>
-      </v-btn>
-    </v-app-bar>
+
+    <app-bar />
 
     <v-content>
       <v-container grid-list-md fluid >
@@ -33,11 +16,12 @@
 </template>
 
 <script>
-import canLogo from './components/canLogo'
+import appBar from './components/appBar'
+
 export default {
   name: 'App',
   components: {
-    canLogo
+    appBar
   },
   data () {
     return {

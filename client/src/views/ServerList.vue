@@ -26,7 +26,7 @@ export default {
     }
   },
   mounted: function () {
-    this.availableServers[0].description = this.i18n.serverList.testDesc
+    this.availableServers[0].description = this.i18n.serverList.testDesc // Done like this so ESLint doesn't ree at unused vars
   }
 }
 </script>

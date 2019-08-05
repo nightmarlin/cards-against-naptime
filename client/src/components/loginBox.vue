@@ -59,6 +59,9 @@
                       :label="i18n.loginBox.password"
                       :hint="`${t.tabType === 'signup' ? i18n.loginBox.hints.password : '' }`"
                       :rules="t.tabType === 'signup' ? formRules.pswdRules : []"
+                      :type="showPassword ? 'text' : 'password'"
+                      :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+                      @click:append="showPassword = !showPassword"
                     />
 
                     <br />
@@ -108,6 +111,7 @@ export default {
       password: '',
       isSignUp: false,
       loading: false,
+      showPassword: false,
 
       tab: null,
       tabs: [

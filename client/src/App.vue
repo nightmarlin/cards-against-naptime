@@ -6,7 +6,7 @@
     <nav-drawer /> <!-- TODO: Find a way to bind the app bar @icon-click event to opening this drawer -->
 
     <v-content>
-      <v-container grid-list-md fluid >
+      <v-container fluid>
         <router-view/>
       </v-container>
     </v-content>

@@ -23,7 +23,7 @@ export default {
     return {
       testServer: {
         author: 'Marlin',
-        accentColor: '#34C3FE',
+        accentColor: '#777777',
         decks: [
           { name: 'Default', description: 'Cood old CAN', id: 1, cards: { black: 50, blank: 2, white: 200 } },
           { name: 'Radix 8', description: 'Extra techy for those who need it', id: 2234, cards: { black: 25, blank: 0, white: 100 } },
@@ -34,7 +34,7 @@ export default {
         maxMemberCount: '12',
         memberCount: '6',
         name: 'Test Server',
-        password: true,
+        password: false,
         spectators: {
           enabled: true,
           maxSpectatorCount: 10,

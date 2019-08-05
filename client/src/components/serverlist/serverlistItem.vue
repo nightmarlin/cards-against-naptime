@@ -8,16 +8,38 @@
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
           <v-icon v-on="on" right>
-            mdi-{{ server.password ? 'lock' : 'lock-open-variant-outline' }}
+            mdi-{{ server.password ? 'lock' : 'lock-open-outline' }}
           </v-icon>
         </template>
         <span>{{ server.password ? 'This game requires a password' : 'Open game, no password needed' }}</span>
       </v-tooltip>
+
+      <v-spacer/>
+
+      <v-tooltip left>
+        <template v-slot:activator="{ on }">
+          <v-btn
+            fab
+            small
+            outlined
+            color="error"
+            @click="removeButtonClicked"
+            v-on="on"
+            v-show="false"
+          >
+            <v-icon>mdi-close-circle-outline</v-icon>
+          </v-btn>
+        </template>
+        <span>Remove this game from your list</span>
+      </v-tooltip>
     </v-card-title>
 
     <v-card-text>
-      <div class="text-truncate">
+      <div class="text subtitle-1">
         {{ server.description }}
+      </div>
+      <div class="text subtitle-2">
+        Created by {{ server.author }}
       </div>
     </v-card-text>
 
@@ -25,13 +47,13 @@
 
     <v-card-text>
       <v-container>
-        <v-layout row>
-          <v-flex xs12 sm12 md8 lg8 xl8> <!-- Decks in use -->
+        <v-layout column reverse>
+          <v-flex> <!-- Decks in use -->
             <v-card
               :dark="darkColor"
               :color="server.accentColor"
               outlined
-              :ripple="$vuetify.breakpoint.smAndDown"
+              ripple
             >
 
               <v-card-title
@@ -48,7 +70,7 @@
                   dense
                   class="overflow-y-auto"
                   max-height="250"
-                  v-show="($vuetify.breakpoint.mdAndUp || showList)"
+                  v-show="showList"
                 >
                   <v-list-item
                     v-for="(d, i) in server.decks"
@@ -67,7 +89,7 @@
                         :href="dataUrl + d.id"
                         target="_blank"
                       >
-                        <v-icon :color="server.accentColor" small>mdi-open-in-new</v-icon>
+                        <v-icon :dark="darkColor">mdi-eye</v-icon>
                       </a>
                     </v-list-item-icon>
                   </v-list-item>
@@ -77,7 +99,7 @@
             </v-card>
           </v-flex>
 
-          <v-flex grow> <!-- Member info -->
+          <v-flex> <!-- Member info   -->
             <v-card :dark="darkColor" :color="server.accentColor" outlined class="fill-height">
               <v-card-title>
                 <div class="text subtitle-1">Members{{ server.spectators.enabled ? ' and Spectators' : '' }}</div>
@@ -88,15 +110,19 @@
               <v-divider />
 
               <v-card-text>
-                <div class="headline">
-                  {{ server.memberCount }} / {{ server.maxMemberCount }} Members
-                </div>
+                <v-layout align-center justify-center>
 
-                <br />
+                  <v-flex class="body-1 text-center">
+                    {{ server.memberCount }} / {{ server.maxMemberCount }} Members
+                  </v-flex>
 
-                <div class="headline" v-show="server.spectators.enabled">
-                  {{ server.spectators.spectatorCount }} / {{ server.spectators.maxSpectatorCount }} Spectators
-                </div>
+                  <v-divider inset vertical v-show="server.spectators.enabled" />
+
+                  <v-flex class="body-1 text-center" v-show="server.spectators.enabled">
+                    {{ server.spectators.spectatorCount }} / {{ server.spectators.maxSpectatorCount }} Spectators
+                  </v-flex>
+
+                </v-layout>
               </v-card-text>
             </v-card>
           </v-flex>
@@ -135,7 +161,7 @@
         absolute
         color="#000000"
       >
-        <v-card>
+        <v-card class="ma-4">
           <v-card-title>Please enter the password to {{ joining ? 'join' : 'spectate' }} the game</v-card-title>
 
           <v-text-field
@@ -149,7 +175,7 @@
 
           <v-card-actions>
             <v-spacer />
-            <v-btn color="success" class="mx-3 my-2" @click="validatePasswordClicked" outlined>
+            <v-btn :color="server.accentColor" class="mx-3 my-2" @click="validatePasswordClicked" outlined>
               go
               <v-icon right>mdi-arrow-right</v-icon>
             </v-btn>
@@ -213,10 +239,19 @@ export default {
       this.passwordOverlay = false
       this.joining = null
       this.enteredPassword = ''
-    }
+    },
+    removeButtonClicked () {}
   },
   mounted () {
     this.darkColor = color(this.server.accentColor).isDark()
   }
 }
 </script>
+
+<style scoped>
+
+a {
+  text-decoration: none;
+}
+
+</style>

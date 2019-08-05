@@ -143,7 +143,7 @@ export default {
     async interactionButton (t) {
       this.loading = true
 
-      const action = t.name === this.i18n.loginBox.login ? 'user/login' : 'user/register'
+      const action = t.tabType === 'login' ? 'user/login' : 'user/register'
       await this.$store.dispatch(action, {
         username: this.username,
         password: this.password

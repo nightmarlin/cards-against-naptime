@@ -62,7 +62,14 @@
                 <v-icon left transition="fade-transition">mdi-chevron-{{ showList ? 'up' : 'down' }}</v-icon>
                 <div class="text subtitle-1">Decks in use</div>
                 <v-spacer />
-                <v-icon>mdi-cards</v-icon>
+
+                <v-tooltip bottom>
+                  <template v-slot:activator="{ on }">
+                    <v-icon v-on="on">mdi-cards</v-icon>
+                  </template>
+                  <span>Click the eye icon to view the deck</span>
+                </v-tooltip>
+
               </v-card-title>
               <v-divider />
 
@@ -113,13 +120,13 @@
               <v-card-text>
                 <v-layout align-center justify-center>
 
-                  <v-flex class="body-1 text-center">
+                  <v-flex class="body-2 text-center">
                     {{ server.memberCount }} / {{ server.maxMemberCount }} Members
                   </v-flex>
 
                   <v-divider inset vertical v-show="server.spectators.enabled" />
 
-                  <v-flex class="body-1 text-center" v-show="server.spectators.enabled">
+                  <v-flex class="body-2 text-center" v-show="server.spectators.enabled">
                     {{ server.spectators.spectatorCount }} / {{ server.spectators.maxSpectatorCount }} Spectators
                   </v-flex>
 

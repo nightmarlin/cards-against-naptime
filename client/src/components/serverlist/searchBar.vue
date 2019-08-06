@@ -42,10 +42,20 @@ export default {
   data () {
     return {
       search: {
-        term: ''
+        term: '',
+        includeSpectate: true, // Show games that are full but have empty spectator slots
+        includePassword: true, // Show games that require a password
+        searchByDeck: false, // Change the search criteria to deck names
+        searchByAuthor: false, // Change the search criteria to game author names
+        showFull: false // Show games that are full
       },
       isOpen: false,
       showOptions: false
+    }
+  },
+  computed: {
+    fullSearch () {
+      return this.search
     }
   }
 }

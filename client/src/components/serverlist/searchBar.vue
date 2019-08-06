@@ -1,10 +1,7 @@
 <template>
   <v-expand-transition>
     <v-toolbar
-      :width="isOpen ? 400 : 64"
       floating
-      absolute
-      collapse
       :extended="showOptions"
       @click="isOpen = !isOpen"
     >

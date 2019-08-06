@@ -32,7 +32,7 @@ export default new Router({
     {
       path: '/serverlist',
       name: 'serverlist',
-      component: () => import(/* webpackChunkName: "serverlist" */ './views/Serverlist.vue')
+      component: () => import(/* webpackChunkName: "serverlist" */ './views/ServerList.vue')
     }
   ]
 })

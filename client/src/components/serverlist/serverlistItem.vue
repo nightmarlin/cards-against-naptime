@@ -146,7 +146,7 @@
         :color="server.accentColor"
         :dark="darkColor"
         @click="joinClicked"
-        :disabled="server.memberCount == server.maxMemberCount"
+        :disabled="server.memberCount === server.maxMemberCount"
       >
         Join
         <v-icon right>mdi-login</v-icon>
@@ -158,7 +158,7 @@
         color="secondary"
         v-show="server.spectators.enabled"
         @click="spectateClicked"
-        :disabled="server.spectators.spectatorCount == server.spectators.maxSpectatorCount"
+        :disabled="server.spectators.spectatorCount === server.spectators.maxSpectatorCount"
       >
         Spectate
         <v-icon right>mdi-account-multiple</v-icon>

@@ -1,0 +1,44 @@
+version: '3.7'
+services:
+  can-websocket:
+    command: /app/node_modules/.bin/nodemon /app/index.js --watch /app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+    - mongo
+    - redis
+    image: can-websocket:dev
+    networks:
+    - can-workspace
+    ports:
+    - '3000:3000'
+    volumes:
+    - .:/app
+    - /app/node_modules
+  redis:
+    image: redis:latest
+    ports:
+    - '6379:6379'
+    volumes:
+    - source: redis-vol
+      target: /data
+      type: volume
+    networks:
+    - can-workspace
+  mongo:
+    image: mongo:4.0.10
+    ports:
+    - 27017:27017
+    volumes:
+    - source: mongo-vol
+      target: /data/db
+      type: volume
+    networks:
+    - can-workspace
+networks:
+  can-workspace:
+    name: can-workspace
+volumes:
+  mongo-vol:
+  redis-vol:

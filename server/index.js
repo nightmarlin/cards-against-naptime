@@ -15,7 +15,7 @@ const io = socketio(server, {
 })
 
 app.get('/', (req, res) => {
-  res.send('welcome to the api :)')
+  res.send('welcome to the api :)') // meet
 })
 
 app.get('/live', (req, res) => {

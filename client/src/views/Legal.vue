@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Legal from '../components/legal'
+import Legal from '../components/Legal'
 
 export default {
   components: {

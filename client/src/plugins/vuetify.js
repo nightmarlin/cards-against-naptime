@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify/lib'
-import canLogo from '../components/app/canLogo'
+import canLogo from '../components/app/CanLogo'
 
 Vue.use(Vuetify)
 

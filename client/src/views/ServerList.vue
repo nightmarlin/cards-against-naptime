@@ -23,8 +23,8 @@
 </template>
 
 <script>
-import searchBar from '../components/serverlist/searchBar'
-import serverlistItem from '../components/serverlist/serverlistItem'
+import searchBar from '../components/serverlist/SearchBar'
+import serverlistItem from '../components/serverlist/ServerListItem'
 const I18N = require('../i18n/en.json')
 const servers = require('./testServers.json')
 

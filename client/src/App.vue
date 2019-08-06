@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import appBar from './components/app/appBar'
-import navDrawer from './components/app/navDrawer'
+import appBar from './components/app/AppBar'
+import navDrawer from './components/app/NavDrawer'
 
 export default {
   name: 'App',

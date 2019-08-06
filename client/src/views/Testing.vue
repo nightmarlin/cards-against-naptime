@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import canLogo from '../components/app/canLogo'
+import canLogo from '../components/app/CanLogo'
 export default {
   components: {
     canLogo

@@ -55,10 +55,11 @@
     "members": "members",
     "spectators": "spectators",
     "decksInUse": "Decks in use",
-    "joinGame": "Join",
-    "spectateGame": "Spectate",
+    "joinGame": "join",
+    "removeGame": "Remove this game from your list",
+    "spectateGame": "spectate",
     "password": {
-      "prompt": "Please enter the password to join the game",
+      "prompt": "Please enter the password to XX the game",
       "hint": "Ask the creator if you can't remember",
       "go": "go",
       "cancel": "cancel"

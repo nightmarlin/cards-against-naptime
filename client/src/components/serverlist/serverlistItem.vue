@@ -165,7 +165,9 @@
         color="#000000"
       >
         <v-card class="ma-4">
-          <v-card-title>Please enter the password to {{ joining ? 'join' : 'spectate' }} the game</v-card-title>
+          <v-card-title>
+            {{ i18n.serverlistItem.password.prompt.replace('XX', (joining ? 'join' : 'spectate')) }}
+          </v-card-title>
 
           <v-text-field
             class="mx-4 my-2"
@@ -198,6 +200,8 @@
 <script>
 const color = require('color')
 const DATA_URL = 'https://api.cardsagainstnaptime.com/cs/'
+const I18N = require('../../i18n/en.json')
+
 export default {
   name: 'serverlistItem',
   data () {
@@ -205,6 +209,7 @@ export default {
       darkColor: false,
       dataUrl: DATA_URL,
       enteredPassword: '',
+      i18n: I18N,
       joining: null, // true: join game, false: spectate game
       passwordOverlay: false,
       showList: false,
@@ -237,7 +242,7 @@ export default {
         this.enter()
       }
     },
-    validatePasswordClicked () {},
+    validatePasswordClicked () { },
     cancelOverlay () {
       this.passwordOverlay = false
       this.joining = null

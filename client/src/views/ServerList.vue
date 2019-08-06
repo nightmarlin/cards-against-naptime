@@ -4,6 +4,8 @@
   So the plan is simple: have a grid list display a list of servers
 
 -->
+<div>
+  <search-bar />
   <v-container grid-list-lg>
     <v-layout wrap>
       <v-flex
@@ -17,15 +19,18 @@
       </v-flex>
     </v-layout>
   </v-container>
+</div>
 </template>
 
 <script>
+import searchBar from '../components/serverlist/searchBar'
 import serverListItem from '../components/serverlist/serverlistItem'
 const I18N = require('../i18n/en.json')
 const servers = require('./testServers.json')
 
 export default {
   components: {
+    searchBar,
     serverListItem
   },
   data () {

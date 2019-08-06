@@ -1,23 +1,16 @@
 <template>
-  <v-layout justify-center >
-
-    <v-flex >
-      <card card-uid="CS001WC001" init-text="Let's go" :init-is-black="true" />
-    </v-flex>
-
+  <v-layout justify-center align-center>
     <v-flex>
-      <server-list-item :server="testServer" />
+      <can-logo :height="256" :width="256" />
     </v-flex>
   </v-layout>
 </template>
 
 <script>
-import card from '../components/game/card'
-import serverListItem from '../components/serverlist/serverlistItem'
+import canLogo from '../components/app/canLogo'
 export default {
   components: {
-    card,
-    serverListItem
+    canLogo
   },
   data () {
     return {
@@ -39,10 +32,13 @@ export default {
           enabled: true,
           maxSpectatorCount: 10,
           spectatorCount: 4
-        }
+        },
+        url: 'huehueheuhue'
       }
     }
-  }
+  },
+  methods: { },
+  mounted () { }
 }
 </script>
 

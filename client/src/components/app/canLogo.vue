@@ -167,7 +167,7 @@
           inkscape:connector-curvature="0"
           id="path4528"
           d="M 52.915631,78.984353 H 218.01969 l -82.5558,165.098957 z"
-          style="fill:#37abc8;fill-opacity:1;stroke:#7f7f7f;stroke-width:1.32291663;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+          :style="`fill:${ triColor ? triColor : '#37abc8'};fill-opacity:1;stroke:#7f7f7f;stroke-width:1.32291663;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1`"
           transform="translate(0,-26.06665)" />
         <g
           transform="rotate(-50,151.55837,142.7281)"
@@ -249,9 +249,12 @@ export default {
     width: {
       type: Number,
       required: true
+    },
+    triColor: {
+      type: String,
+      required: false
     }
-  },
-  methods: { }
+  }
 }
 </script>
 

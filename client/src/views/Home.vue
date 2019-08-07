@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import LoginBox from './LoginBox'
+import LoginBox from '../components/LoginBox'
 const MARKED = require('marked')
 const i18n = require('../i18n/en.json')
 

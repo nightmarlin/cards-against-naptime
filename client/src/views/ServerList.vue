@@ -13,7 +13,7 @@
         v-for="(server, i) in availableServers"
         :key="'server-' + i"
       >
-      <serverlist-item
+      <server-list-item
         :server="server"
       />
       </v-flex>
@@ -23,15 +23,15 @@
 </template>
 
 <script>
-import searchBar from '../components/serverlist/SearchBar'
-import serverlistItem from '../components/serverlist/ServerListItem'
+import SearchBar from '../components/serverlist/SearchBar'
+import ServerListItem from '../components/serverlist/ServerListItem'
 const I18N = require('../i18n/en.json')
 const servers = require('./testServers.json')
 
 export default {
   components: {
-    searchBar,
-    serverlistItem
+    SearchBar,
+    ServerListItem
   },
   data () {
     return {

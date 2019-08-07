@@ -210,7 +210,7 @@ const DATA_URL = 'https://api.cardsagainstnaptime.com/cs/'
 const I18N = require('../../i18n/en.json')
 
 export default {
-  name: 'serverlistItem',
+  name: 'ServerListItem',
   data () {
     return {
       darkColor: false,

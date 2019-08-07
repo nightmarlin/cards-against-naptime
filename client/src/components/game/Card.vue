@@ -28,7 +28,7 @@ const qrcode = require('qrcode')
 const DATA_URL = 'https://api.cardsagainstnaptime.com/cs/'
 
 export default {
-  name: 'card',
+  name: 'Card',
   props: {
     initResponseCount: Object,
     // Standard - Pick 2 - Draw 2 Pick 3

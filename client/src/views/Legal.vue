@@ -1,13 +1,9 @@
 <template>
-  <Legal />
+  <p>sue me</p>
 </template>
 
 <script>
-import Legal from '../components/Legal'
 
 export default {
-  components: {
-    Legal
-  }
 }
 </script>

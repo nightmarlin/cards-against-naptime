@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'navDrawer',
+  name: 'NavDrawer',
   computed: {
   },
   data () { return { } },

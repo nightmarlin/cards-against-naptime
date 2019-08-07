@@ -93,9 +93,8 @@ import { mapState, mapGetters } from 'vuex'
 const I18N = require('../i18n/en.json')
 
 export default {
-  name: 'loginBox',
+  name: 'LoginBox',
   props: {
-    loginStatus: Object
   },
   computed: {
     ...mapState({

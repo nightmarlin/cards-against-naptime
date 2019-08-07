@@ -241,7 +241,7 @@
 
 <script>
 export default {
-  name: 'canLogo',
+  name: 'CanLogo',
   props: {
     height: {
       type: Number

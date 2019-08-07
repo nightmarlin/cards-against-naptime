@@ -39,7 +39,7 @@ import { mapState, mapGetters } from 'vuex'
 // import canLogo from './canLogo'
 
 export default {
-  name: 'appBar',
+  name: 'AppBar',
   components: {
     // canLogo
   },

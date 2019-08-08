@@ -84,14 +84,9 @@
       prepend-icon="mdi-magnify"
       v-model="search.term"
       class="mx-3"
+      append-icon="mdi-tune"
+      @click:append="search.advanced = !search.advanced"
     />
-
-    <v-icon
-      @click.stop="search.advanced = !search.advanced"
-      :color="search.advanced ? 'primary' : ''"
-    >
-      mdi-tune
-    </v-icon>
 
   </v-toolbar>
 </template>

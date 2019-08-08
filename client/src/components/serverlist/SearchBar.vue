@@ -109,9 +109,13 @@ export default {
       }
     }
   },
-  computed: {
-    fullSearch () {
-      return this.search
+  watch: {
+    search: {
+      immediate: true,
+      deep: true,
+      handler: function (val) {
+        this.$emit('input', val)
+      }
     }
   }
 }

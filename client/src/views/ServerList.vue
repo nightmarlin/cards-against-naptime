@@ -5,12 +5,12 @@
 
 -->
 <div>
-  <search-bar />
+  <search-bar v-model="filter" />
   <v-container grid-list-lg>
     <v-layout wrap>
       <v-flex
         xs12 sm6 md4
-        v-for="(server, i) in availableServers"
+        v-for="(server, i) in filteredServers"
         :key="'server-' + i"
       >
       <server-list-item
@@ -33,10 +33,27 @@ export default {
     SearchBar,
     ServerListItem
   },
+  computed: {
+    filteredServers () {
+      return this.availableServers.filter(server => {
+        if (!this.filter.includeSpectate && server.spectators.enabled) {
+          return false
+        }
+
+        if (!this.filter.includePassword && server.password) {
+          return false
+        }
+        return true
+      })
+    }
+  },
   data () {
     return {
-      availableServers: null,
-      i18n: I18N
+      availableServers: [],
+      i18n: I18N,
+      filter: {
+
+      }
     }
   },
   mounted: function () {

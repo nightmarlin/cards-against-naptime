@@ -1,3 +1,5 @@
+import { rpc } from './websocket'
+
 const state = {
   jwt: null,
   username: null
@@ -12,13 +14,11 @@ const mutations = {
 
 const actions = {
   async login ({ commit, dispatch }, payload) {
-    const jwt = await dispatch('websocket/rpc', {
-      command: 'login',
-      params: {
+    const jwt = await rpc('login',
+      {
         username: payload.username,
         password: payload.password
-      }
-    }, { root: true })
+      })
 
     commit('setLogin', {
       jwt,
@@ -26,13 +26,11 @@ const actions = {
     })
   },
   async register ({ commit, dispatch }, payload) {
-    const jwt = await dispatch('websocket/rpc', {
-      command: 'register',
-      params: {
+    const jwt = await rpc('register',
+      {
         username: payload.username,
         password: payload.password
-      }
-    }, { root: true })
+      })
 
     commit('setLogin', {
       jwt,

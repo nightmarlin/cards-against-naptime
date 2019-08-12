@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import { connect as websocketConnect } from './store/websocket'
 import appBar from './components/app/AppBar'
 import navDrawer from './components/app/NavDrawer'
 
@@ -33,7 +34,7 @@ export default {
     }
   },
   mounted () {
-    this.$store.dispatch('websocket/connect')
+    websocketConnect()
   }
 }
 </script>

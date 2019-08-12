@@ -2,8 +2,9 @@ const config = require('config')
 const logger = require('pino')()
 const mongoose = require('mongoose')
 
-const CardSet = require('./card-set')
+const Deck = require('./deck')
 const User = require('./user')
+const Server = require('./server')
 
 const connect = async () => {
   logger.warn('connecting to mongo')
@@ -12,7 +13,8 @@ const connect = async () => {
 }
 
 module.exports = {
-  CardSet,
+  Deck,
   User,
+  Server,
   connect
 }

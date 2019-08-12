@@ -3,6 +3,6 @@ const mongoose = require('mongoose')
 const schema = new mongoose.Schema({
 })
 
-const CardSet = mongoose.model('CardSet', schema)
+const Deck = mongoose.model('Deck', schema)
 
-module.exports = CardSet
+module.exports = Deck

@@ -40,7 +40,7 @@
           />
           <v-text-field
             single-line
-            solo
+            outlined rounded
             hint="Type name here"
             v-model="search.authorName"
             v-show="search.searchByAuthor"
@@ -57,7 +57,7 @@
           <v-combobox
             chips
             multiple
-            solo
+            outlined rounded
             hint="Type deck names here"
             v-model="search.deckNames"
             v-show="search.searchByDecks"
@@ -79,6 +79,7 @@
     </template>
 
     <v-text-field
+      outlined rounded
       hide-details
       single-line
       prepend-icon="mdi-magnify"

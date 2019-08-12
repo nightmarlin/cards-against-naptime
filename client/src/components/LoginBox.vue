@@ -46,7 +46,7 @@
                     ref="details"
                   >
 
-                    <v-text-field
+                    <v-text-field outlined rounded
                       :counter="formRules.usernameMaxLength"
                       v-model="username"
                       :label="i18n.loginBox.username"
@@ -54,7 +54,7 @@
                       :rules="t.tabType === 'signup' ? formRules.usernameRules : []"
                     />
 
-                    <v-text-field
+                    <v-text-field outlined rounded
                       v-model="password"
                       :label="i18n.loginBox.password"
                       :hint="`${t.tabType === 'signup' ? i18n.loginBox.hints.password : '' }`"

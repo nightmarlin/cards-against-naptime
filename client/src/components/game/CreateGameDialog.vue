@@ -26,9 +26,9 @@
           * Game name ✅
           * Game description ✅
           * Accent colour
-          * Max member count
-          * Spectators?
-            * Max spectator count
+          * Max member count ✅
+          * Spectators? ✅
+            * Max spectator count ✅
           * Password?
             * Set password
           * Decks
@@ -127,6 +127,40 @@
 
           </v-layout>
 
+          <v-layout row justify-space-between align-center>
+            <v-flex shrink> <!-- color selector -->
+              <v-card class="mx-3">
+
+                <v-card-title
+                  @click="showPicker = !showPicker"
+                >
+                  Accent colour
+                  <v-spacer />
+                  <v-icon large>
+                    mdi-chevron-{{ showPicker ? 'up' : 'down' }}
+                  </v-icon>
+                </v-card-title>
+
+                <v-expand-transition>
+                  <v-card-text v-if="showPicker" >
+                    <v-color-picker
+                      dark
+                      show-swatches
+                      swatches-max-height="150"
+                      hide-inputs
+                      mode="hexa"
+                      v-model="serverDetails.accentColor"
+                    />
+                  </v-card-text>
+                </v-expand-transition>
+              </v-card>
+            </v-flex>
+
+            <v-flex sm5>
+            </v-flex>
+
+          </v-layout>
+
         </v-card-text>
       </v-expand-transition>
 
@@ -149,6 +183,7 @@ export default {
     return {
       absoluteMaxMemberCount: 12,
       absoluteMaxSpectatorCount: 24,
+      showPicker: false,
       availableDecks: [
         { name: 'Default', description: 'Cood old CAN', id: 1, cards: { black: 50, 'blank': 2, white: 200 } },
         { name: 'Radix 8', description: 'Extra techy for those who need it', id: 2234, cards: { black: 25, 'blank': 0, white: 100 } },
@@ -167,7 +202,7 @@ export default {
       maxDescriptionLength: 128,
       serverDetails: {
         author: this.loggedInUsername,
-        accentColor: '#000000',
+        accentColor: '#777777',
         decks: [ ],
         description: '',
         maxMemberCount: 0,

@@ -8,6 +8,7 @@
 
 <script>
 import createGameDialog from '../components/game/CreateGameDialog'
+
 export default {
   components: {
     createGameDialog

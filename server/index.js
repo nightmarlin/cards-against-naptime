@@ -5,6 +5,7 @@ const http = require('http')
 const logger = require('pino')()
 const socketio = require('socket.io')
 const SocketHandler = require('./socket-handler')
+const PubSub = require('./pubsub')
 
 const PORT = config.get('port')
 
@@ -27,6 +28,7 @@ app.get('/ready', (req, res) => {
 })
 
 SocketHandler.setup(io)
+PubSub.setup(io)
 
 db.connect()
   .catch(err => {

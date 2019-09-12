@@ -22,7 +22,7 @@ export function connect () {
 
   socket.on('topicUpdate', msg => {
     if (subscriptions[msg.topic]) {
-      store.dispatch(subscriptions[msg.topic], msg.payload)
+      store.dispatch(subscriptions[msg.topic], { topic: msg.topic, payload: msg.payload })
     }
   })
 }

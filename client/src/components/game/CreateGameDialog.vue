@@ -147,8 +147,7 @@
                       dark
                       show-swatches
                       swatches-max-height="150"
-                      hide-inputs
-                      mode="hexa"
+                      mode="hex"
                       v-model="serverDetails.accentColor"
                     />
                   </v-card-text>

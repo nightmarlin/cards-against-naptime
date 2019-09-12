@@ -39,9 +39,14 @@
                             :key="idx"
                             shrink
                     >
-                      <v-icon>
-                        mdi-{{ ico }}
-                      </v-icon>
+                      <v-tooltip top>
+                        <template v-slot:activator="{ on }">
+                          <v-icon v-on="on">
+                            mdi-{{ ico.icon }}
+                          </v-icon>
+                        </template>
+                        <span>{{ ico.tooltip }}</span>
+                      </v-tooltip>
                     </v-flex>
                   </v-layout>
                 </v-card-actions>
@@ -73,7 +78,11 @@ export default {
           iconCol: 'white',
           title: i18n.home.timelineText[0].title,
           text: i18n.home.timelineText[0].text,
-          bottomIcons: ['creation', 'sleep-off', 'death-star'],
+          bottomIcons: [
+            { icon: 'creation', tooltip: 'Create games' },
+            { icon: 'sleep-off', tooltip: 'Play with friends' },
+            { icon: 'death-star', tooltip: 'Achieve victory!' }
+          ],
           expanded: true
         },
         {
@@ -82,7 +91,12 @@ export default {
           iconCol: 'white',
           title: i18n.home.timelineText[1].title,
           text: i18n.home.timelineText[1].text,
-          bottomIcons: [ 'play', 'wrench', 'chart-bar', 'discord' ],
+          bottomIcons: [
+            { icon: 'play', tooltip: 'Have fun' },
+            { icon: 'wrench', tooltip: 'Fix bugs' },
+            { icon: 'chart-bar', tooltip: 'Share stats' },
+            { icon: 'discord', tooltip: 'Collect feedback' }
+          ],
           expanded: false
         },
         {
@@ -91,7 +105,11 @@ export default {
           iconCol: 'white',
           title: i18n.home.timelineText[2].title,
           text: i18n.home.timelineText[2].text,
-          bottomIcons: ['pizza', 'looks', 'barcode-scan'],
+          bottomIcons: [
+            { icon: 'pizza', tooltip: 'Have parties' },
+            { icon: 'looks', tooltip: 'Have a good time' },
+            { icon: 'barcode-scan', tooltip: 'Share your results' }
+          ],
           expanded: false
         },
         {
@@ -100,7 +118,12 @@ export default {
           iconCol: 'white',
           title: i18n.home.timelineText[3].title,
           text: i18n.home.timelineText[3].text,
-          bottomIcons: ['bank', 'briefcase', 'cookie', 'safe'],
+          bottomIcons: [
+            { icon: 'bank', tooltip: 'We don\'t sell your data' },
+            { icon: 'briefcase', tooltip: 'Nice and secure transactions' },
+            { icon: 'cookie', tooltip: 'Low fat cookies' },
+            { icon: 'safe', tooltip: 'Locked away tight' }
+          ],
           expanded: true
         }
       ]

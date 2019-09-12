@@ -27,11 +27,12 @@ const schema = new Schema({
       maxSpectatorCount: Number
     }
   },
-  state: {
-    gameStage: {
+  gameInProgress: {
+    stage: {
       type: String,
       enum: ['LOBBY', 'IN_PLAY', 'COMPLETED']
-    }
+    },
+    state: Object
   }
 })
 

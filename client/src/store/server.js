@@ -5,10 +5,28 @@ const state = {
 const mutations = {
   setFilter (state, filter) {
     state.filter = filter
+  },
+  addServer (state, server) {
+    state.unfilteredList = [
+      ...state.unfilteredList,
+      server
+    ]
+  },
+  setServers (state, servers) {
+    state.unfilteredList = servers
+  },
+  updateServer (state, server) {
   }
 }
 
 const actions = {
+  handleTopicMessages ({ state, commit, dispatch }, { topic, payload }) {
+    if (topic === 'servers') {
+      if (payload.action === 'CREATE') {
+        commit('addServer', payload.data)
+      }
+    }
+  }
 }
 
 const getters = {

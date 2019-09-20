@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     logout: function () {
-      this.isLoggedIn = false
+      this.$store.dispatch('user/logout')
     },
     iconClick: function () {
       this.$emit('icon-clicked')

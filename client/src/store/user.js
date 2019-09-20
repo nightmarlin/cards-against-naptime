@@ -25,6 +25,9 @@ const actions = {
       username: payload.username
     })
   },
+  logout ({ commit }) {
+    commit('setLogin', { jwt: null, username: null })
+  },
   async register ({ commit, dispatch }, payload) {
     const jwt = await rpc('register',
       {

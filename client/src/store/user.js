@@ -14,31 +14,40 @@ const mutations = {
 
 const actions = {
   async login ({ commit, dispatch }, payload) {
-    const jwt = await rpc('login',
-      {
-        username: payload.username,
-        password: payload.password
-      })
+    try {
+      const jwt = await rpc('login',
+        {
+          username: payload.username,
+          password: payload.password
+        })
 
-    commit('setLogin', {
-      jwt,
-      username: payload.username
-    })
+      commit('setLogin', {
+        jwt,
+        username: payload.username
+      })
+    } catch (e) {
+      dispatch('ui/handleError', e, { root: true })
+    }
   },
   logout ({ commit }) {
     commit('setLogin', { jwt: null, username: null })
   },
   async register ({ commit, dispatch }, payload) {
-    const jwt = await rpc('register',
-      {
-        username: payload.username,
-        password: payload.password
-      })
+    try {
+      const jwt = await rpc('register',
+        {
+          username: payload.username,
+          password: payload.password
+        }
+      )
 
-    commit('setLogin', {
-      jwt,
-      username: payload.username
-    })
+      commit('setLogin', {
+        jwt,
+        username: payload.username
+      })
+    } catch (e) {
+      dispatch('ui/handleError', e, { root: true })
+    }
   }
 }
 

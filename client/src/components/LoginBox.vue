@@ -65,16 +65,18 @@
                     />
 
                     <br />
-                    {{ error }}
+
                     <v-btn
                       rounded
-                      :color="`${t.tabType === 'signup' ? 'teal lighten-3' : 'primary' }`"
+                      :color="`${ error ? 'error' : ( t.tabType === 'signup' ? 'teal lighten-3' : 'primary' ) }`"
                       @click="interactionButton(t)"
                       :disabled="loading"
                       :loading="loading"
                     >
                       {{ t.name }}
                     </v-btn>
+
+                    {{ error }}
 
                   </v-form>
                 </v-flex>

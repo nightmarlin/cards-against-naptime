@@ -8,6 +8,7 @@
     <v-content>
       <v-container fluid>
         <router-view/>
+        <notif-viewer />
       </v-container>
     </v-content>
 
@@ -21,12 +22,14 @@
 import { connect as websocketConnect } from './store/websocket'
 import appBar from './components/app/AppBar'
 import navDrawer from './components/app/NavDrawer'
+import NotifViewer from './components/app/NotifViewer'
 
 export default {
   name: 'App',
   components: {
     appBar,
-    navDrawer
+    navDrawer,
+    NotifViewer
   },
   data () {
     return {

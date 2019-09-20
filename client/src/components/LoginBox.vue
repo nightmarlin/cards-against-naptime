@@ -65,7 +65,7 @@
                     />
 
                     <br />
-
+                    {{ error }}
                     <v-btn
                       rounded
                       :color="`${t.tabType === 'signup' ? 'teal lighten-3' : 'primary' }`"
@@ -106,6 +106,7 @@ export default {
   },
   data () {
     return {
+      error: null,
       username: '',
       password: '',
       isSignUp: false,
@@ -141,12 +142,17 @@ export default {
     },
     async interactionButton (t) {
       this.loading = true
-
+      this.error = null
       const action = t.tabType === 'login' ? 'user/login' : 'user/register'
-      await this.$store.dispatch(action, {
-        username: this.username,
-        password: this.password
-      })
+
+      try {
+        await this.$store.dispatch(action, {
+          username: this.username,
+          password: this.password
+        })
+      } catch (e) {
+        this.error = e.message
+      }
 
       this.loading = false
     }

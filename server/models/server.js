@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const { UserError } = require('../utils/errors')
 const bcrypt = require('bcrypt')
-const PubSub = require('../pubsub')
+const pubsub = require('../pubsub')
 
 const schema = new Schema({
   meta: {
@@ -65,7 +65,7 @@ schema.statics.createServer = async function ({ data, user }) {
     }
   })
 
-  PubSub.publishTopicUpdate('servers', {
+  pubsub.publishTopicUpdate('servers', {
     action: 'CREATE',
     data: newServer
   })
